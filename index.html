@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zinapoya — IELTS 9 sari</title>
+<meta name="description" content="Ingliz tilini mustaqil o'rganish uchun shaxsiy platforma: daraja testi, grammatika, lug'at, listening, reading, writing, speaking va uyga vazifalar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  --bg:#F4F1E6;
+  --bg-2:#FFFFFF;
+  --ink:#132623;
+  --ink-soft:#3E5450;
+  --teal:#164A43;
+  --teal-deep:#0E332E;
+  --gold:#AD7C1E;
+  --gold-soft:#E7D3A4;
+  --line:#DCD5C0;
+  --danger:#9C3B2E;
+  --ok:#2E6B4F;
+  --radius-s:4px;
+  --radius-m:10px;
+  --shadow: 0 1px 2px rgba(19,38,35,0.06), 0 6px 18px rgba(19,38,35,0.06);
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+:root:not([data-theme="light"]){
+  @media (prefers-color-scheme: dark){
+    --bg:#101A18;
+    --bg-2:#16221F;
+    --ink:#EDEAE0;
+    --ink-soft:#B7C4C0;
+    --teal:#5FA898;
+    --teal-deep:#8FC7B8;
+    --gold:#E0B968;
+    --gold-soft:#4A3E24;
+    --line:#2A3835;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101A18;
+  --bg-2:#16221F;
+  --ink:#EDEAE0;
+  --ink-soft:#B7C4C0;
+  --teal:#5FA898;
+  --teal-deep:#8FC7B8;
+  --gold:#E0B968;
+  --gold-soft:#4A3E24;
+  --line:#2A3835;
+}
+*{box-sizing:border-box;}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif;}
+h1,h2,h3{color:var(--ink);margin:0 0 .4em;font-weight:600;letter-spacing:-0.01em;}
+a{color:var(--teal);}
+button{font-family:inherit;}
+::selection{background:var(--gold-soft);}
+
+/* ---------- Header ---------- */
+header.top{
+  position:sticky; top:0; z-index:40;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+  padding-top:env(safe-area-inset-top,0px);
+}
+.top-inner{
+  max-width:1080px; margin:0 auto; padding:14px 20px;
+  display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+}
+.brand{display:flex; align-items:baseline; gap:8px; margin-right:auto;}
+.brand .mark{font-family:'Fraunces',serif; font-weight:700; font-size:1.35rem; color:var(--teal-deep);}
+.brand .sub{font-size:.78rem; color:var(--ink-soft);}
+nav.tabs{display:flex; gap:2px; flex-wrap:wrap; margin-right:auto;}
+nav.tabs button{
+  background:none; border:none; padding:8px 12px; border-radius:var(--radius-s);
+  color:var(--ink-soft); font-size:.88rem; cursor:pointer; white-space:nowrap;
+  border-bottom:2px solid transparent;
+}
+nav.tabs button:hover{color:var(--ink);}
+nav.tabs button.active{color:var(--teal-deep); border-bottom-color:var(--gold); font-weight:600;}
+.langtoggle{
+  display:flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; font-size:.78rem;
+}
+.langtoggle button{
+  background:var(--bg-2); border:none; padding:6px 11px; cursor:pointer; color:var(--ink-soft);
+}
+.langtoggle button.active{background:var(--teal); color:#fff;}
+.bandbadge{
+  display:flex; align-items:center; gap:6px; font-size:.8rem; color:var(--ink-soft);
+  border:1px solid var(--line); padding:5px 10px; border-radius:999px; background:var(--bg-2);
+}
+.bandbadge b{color:var(--gold); font-family:'Fraunces',serif; font-size:1rem;}
+
+/* ---------- Layout ---------- */
+main{max-width:1080px; margin:0 auto; padding:32px 20px 80px;}
+.view{display:none;}
+.view.active{display:block; animation:fadeIn .35s ease;}
+@keyframes fadeIn{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;}}
+@media (prefers-reduced-motion: reduce){.view.active{animation:none;}}
+
+.card{
+  background:var(--bg-2); border:1px solid var(--line); border-radius:var(--radius-m);
+  padding:22px; box-shadow:var(--shadow);
+}
+.grid{display:grid; gap:18px;}
+.grid.cols-2{grid-template-columns:1fr 1fr;}
+.grid.cols-3{grid-template-columns:repeat(3,1fr);}
+@media (max-width:720px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr;}}
+
+.btn{
+  display:inline-flex; align-items:center; gap:8px; background:var(--teal); color:#fff;
+  border:none; padding:11px 20px; border-radius:999px; font-size:.92rem; font-weight:600;
+  cursor:pointer; transition:transform .15s ease, background .15s ease;
+}
+.btn:hover{background:var(--teal-deep);}
+.btn:active{transform:scale(.98);}
+.btn.ghost{background:transparent; color:var(--teal); border:1px solid var(--teal);}
+.btn.ghost:hover{background:var(--teal); color:#fff;}
+.btn:disabled{opacity:.45; cursor:not-allowed;}
+.btn:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visible{
+  outline:2px solid var(--gold); outline-offset:2px;
+}
+
+/* ---------- Hero / ladder ---------- */
+.hero{display:grid; grid-template-columns:1.1fr .9fr; gap:36px; align-items:center; padding:10px 0 40px;}
+@media (max-width:820px){.hero{grid-template-columns:1fr;}}
+.hero h1{font-size:2.5rem; line-height:1.08;}
+.hero p.lead{color:var(--ink-soft); font-size:1.08rem; max-width:46ch;}
+.ladder{width:100%; height:auto;}
+.ladder .step{fill:var(--bg-2); stroke:var(--line);}
+.ladder .step.done{fill:var(--gold-soft); stroke:var(--gold);}
+.ladder text{font-family:'Fraunces',serif; fill:var(--ink-soft); font-size:13px;}
+.ladder text.num{fill:var(--gold); font-weight:700;}
+
+.section-title{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:18px; gap:12px; flex-wrap:wrap;}
+.section-title p{color:var(--ink-soft); margin:2px 0 0; font-size:.95rem;}
+
+/* ---------- Progress bars ---------- */
+.pbar-row{display:flex; align-items:center; gap:12px; margin:10px 0;}
+.pbar-row .label{width:130px; font-size:.86rem; color:var(--ink-soft); flex-shrink:0;}
+.pbar-track{flex:1; height:8px; background:var(--line); border-radius:99px; overflow:hidden;}
+.pbar-fill{height:100%; background:linear-gradient(90deg,var(--teal),var(--gold)); border-radius:99px; transition:width .4s ease;}
+.pbar-pct{width:38px; text-align:right; font-size:.82rem; color:var(--ink-soft);}
+
+/* ---------- Quiz / test ---------- */
+.qcard{border-top:1px solid var(--line); padding:18px 0;}
+.qcard:first-child{border-top:none;}
+.qcard .qtext{font-weight:600; margin-bottom:10px;}
+.opts{display:grid; gap:8px;}
+.opt{
+  border:1px solid var(--line); border-radius:var(--radius-s); padding:10px 14px; cursor:pointer;
+  background:var(--bg-2); font-size:.94rem; text-align:left;
+}
+.opt:hover{border-color:var(--teal);}
+.opt.selected{border-color:var(--teal); background:var(--gold-soft);}
+.opt.correct{border-color:var(--ok); background:#E4F3EA;}
+.opt.wrong{border-color:var(--danger); background:#F7E4E0;}
+.progress-line{font-size:.82rem; color:var(--ink-soft); margin-bottom:6px;}
+
+/* ---------- Vocab flip cards ---------- */
+.flip{perspective:1000px; height:150px; cursor:pointer;}
+.flip-inner{position:relative; width:100%; height:100%; transition:transform .5s; transform-style:preserve-3d;}
+.flip.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-face{
+  position:absolute; inset:0; backface-visibility:hidden; border-radius:var(--radius-m);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:12px;
+  border:1px solid var(--line);
+}
+.flip-front{background:var(--bg-2);}
+.flip-front .w{font-family:'Fraunces',serif; font-size:1.25rem;}
+.flip-front .pos{font-size:.75rem; color:var(--ink-soft); margin-top:4px;}
+.flip-back{background:var(--teal); color:#fff; transform:rotateY(180deg);}
+.flip-back .tr{font-weight:600;}
+.flip-back .ex{font-size:.78rem; opacity:.85; margin-top:6px; font-style:italic;}
+
+/* ---------- Reading ---------- */
+.passage{
+  border-left:3px solid var(--gold); padding:4px 18px; margin-bottom:18px; color:var(--ink-soft);
+  max-width:70ch; font-size:.98rem;
+}
+.passage p{margin:0 0 12px;}
+
+/* ---------- Speaking ---------- */
+.timer{
+  font-family:'Fraunces',serif; font-size:2.6rem; color:var(--teal-deep); text-align:center; margin:8px 0;
+}
+.cue{border:1px solid var(--line); border-radius:var(--radius-m); padding:16px; background:var(--bg-2);}
+.cue h4{margin:0 0 6px; font-family:'Fraunces',serif; font-size:1.05rem;}
+.cue ul{margin:6px 0 0; padding-left:18px; color:var(--ink-soft); font-size:.9rem;}
+
+/* ---------- Writing ---------- */
+textarea{
+  width:100%; min-height:220px; border:1px solid var(--line); border-radius:var(--radius-s);
+  padding:14px; font-family:inherit; font-size:.95rem; resize:vertical; background:var(--bg-2); color:var(--ink);
+}
+.wordcount{font-size:.8rem; color:var(--ink-soft); text-align:right; margin-top:6px;}
+
+/* ---------- Homework checklist ---------- */
+.hw-item{display:flex; align-items:flex-start; gap:12px; padding:12px 0; border-top:1px solid var(--line);}
+.hw-item:first-child{border-top:none;}
+.hw-item input[type=checkbox]{margin-top:3px; width:18px; height:18px; accent-color:var(--teal); flex-shrink:0;}
+.hw-item.done label{text-decoration:line-through; color:var(--ink-soft);}
+
+/* ---------- Misc ---------- */
+.pill{display:inline-block; font-size:.72rem; padding:3px 10px; border-radius:999px; background:var(--gold-soft); color:var(--teal-deep); font-weight:600;}
+.muted{color:var(--ink-soft);}
+.divider{height:1px; background:var(--line); margin:26px 0;}
+.result-box{border:1px solid var(--gold); background:var(--gold-soft); border-radius:var(--radius-m); padding:20px; margin-top:16px;}
+.result-box .bignum{font-family:'Fraunces',serif; font-size:2.4rem; color:var(--teal-deep);}
+.tag-uz, .tag-en, .tag-ru{display:none;}
+[data-lang="uz"] .tag-uz{display:inline;}
+[data-lang="en"] .tag-en{display:inline;}
+[data-lang="ru"] .tag-ru{display:inline;}
+footer{max-width:1080px; margin:0 auto; padding:20px; color:var(--ink-soft); font-size:.82rem; text-align:center;}
+.overflow-x{overflow-x:auto;}
+</style>
+</head>
+<body data-lang="uz">
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brand">
+      <span class="mark">Zinapoya</span>
+      <span class="sub">IELTS 9 sari · self-study</span>
+    </div>
+    <nav class="tabs" id="tabs">
+      <button data-view="home"><span class="tag-uz">Bosh sahifa</span><span class="tag-en">Home</span><span class="tag-ru">Главная</span></button>
+      <button data-view="test"><span class="tag-uz">Daraja testi</span><span class="tag-en">Level test</span><span class="tag-ru">Тест уровня</span></button>
+      <button data-view="grammar"><span class="tag-uz">Grammatika</span><span class="tag-en">Grammar</span><span class="tag-ru">Грамматика</span></button>
+      <button data-view="vocab"><span class="tag-uz">Lug'at</span><span class="tag-en">Vocabulary</span><span class="tag-ru">Словарь</span></button>
+      <button data-view="listening"><span class="tag-uz">Listening</span><span class="tag-en">Listening</span><span class="tag-ru">Аудирование</span></button>
+      <button data-view="reading"><span class="tag-uz">Reading</span><span class="tag-en">Reading</span><span class="tag-ru">Чтение</span></button>
+      <button data-view="writing"><span class="tag-uz">Writing</span><span class="tag-en">Writing</span><span class="tag-ru">Письмо</span></button>
+      <button data-view="speaking"><span class="tag-uz">Speaking</span><span class="tag-en">Speaking</span><span class="tag-ru">Говорение</span></button>
+      <button data-view="homework"><span class="tag-uz">Uyga vazifa</span><span class="tag-en">Homework</span><span class="tag-ru">Домашнее задание</span></button>
+      <a href="about.html" style="padding:8px 12px; color:var(--ink-soft); text-decoration:none; font-size:.88rem;"><span class="tag-uz">Biz haqimizda</span><span class="tag-en">About</span><span class="tag-ru">О нас</span></a>
+      <a href="pricing.html" style="padding:8px 12px; color:var(--ink-soft); text-decoration:none; font-size:.88rem;"><span class="tag-uz">Narxlar</span><span class="tag-en">Pricing</span><span class="tag-ru">Тарифы</span></a>
+      <a href="blog.html" style="padding:8px 12px; color:var(--ink-soft); text-decoration:none; font-size:.88rem;"><span class="tag-uz">Blog</span><span class="tag-en">Blog</span><span class="tag-ru">Блог</span></a>
+    </nav>
+    <div class="bandbadge"><span class="tag-uz">Daraja:</span><span class="tag-en">Level:</span><span class="tag-ru">Уровень:</span> <b id="bandBadgeVal">—</b></div>
+    <div class="langtoggle">
+      <button id="btnUz" class="active">UZ</button>
+      <button id="btnRu">RU</button>
+      <button id="btnEn">EN</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===================== HOME ===================== -->
+  <section class="view active" id="view-home">
+    <div class="hero">
+      <div>
+        <p class="pill tag-uz">Shaxsiy platforma</p>
+        <p class="pill tag-en">Personal platform</p>
+        <p class="pill tag-ru">Личная платформа</p>
+        <h1 class="tag-uz">1-darajadan IELTS 9-darajasigacha bo'lgan zinapoya</h1>
+        <h1 class="tag-en">The ladder from level 1 to IELTS band 9</h1>
+        <h1 class="tag-ru">Лестница от уровня 1 до IELTS 9</h1>
+        <p class="lead tag-uz">Grammatika, lug'at, listening, reading, writing va speaking — barchasi bitta joyda. Avval qisqa daraja testini yeching, keyin o'zingizga mos bo'limdan boshlang. Har bir mashq va uyga vazifa avtomatik saqlanadi.</p>
+        <p class="lead tag-en">Grammar, vocabulary, listening, reading, writing and speaking — all in one place. Take the short level test first, then start from the section that fits you. Every exercise and homework item is saved automatically.</p>
+        <p class="lead tag-ru">Грамматика, словарь, аудирование, чтение, письмо и говорение — всё в одном месте. Сначала пройдите короткий тест уровня, затем начните с подходящего раздела. Каждое упражнение и домашнее задание сохраняются автоматически.</p>
+        <div style="display:flex; gap:12px; margin-top:22px; flex-wrap:wrap;">
+          <button class="btn" onclick="goto('test')"><span class="tag-uz">Daraja testini boshlash</span><span class="tag-en">Start the level test</span><span class="tag-ru">Начать тест уровня</span></button>
+          <button class="btn ghost" onclick="goto('progress')"><span class="tag-uz">Progressni ko'rish</span><span class="tag-en">View progress</span><span class="tag-ru">Посмотреть прогресс</span></button>
+        </div>
+      </div>
+      <svg class="ladder" viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" id="ladderSvg">
+        <!-- steps drawn by JS -->
+      </svg>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-title">
+      <h2 class="tag-uz">Bo'limlar</h2>
+      <h2 class="tag-en">Sections</h2>
+      <h2 class="tag-ru">Разделы</h2>
+    </div>
+    <div class="grid cols-3" id="homeCards"></div>
+
+    <div class="divider"></div>
+    <div class="section-title">
+      <h2 class="tag-uz">Umumiy progress</h2>
+      <h2 class="tag-en">Overall progress</h2>
+      <h2 class="tag-ru">Общий прогресс</h2>
+    </div>
+    <div class="card" id="progressCard"></div>
+  </section>
+
+  <!-- ===================== LEVEL TEST ===================== -->
+  <section class="view" id="view-test">
+    <div class="section-title">
+      <div>
+        <h2 class="tag-uz">Daraja testi</h2>
+        <h2 class="tag-en">Level test</h2>
+        <h2 class="tag-ru">Тест уровня</h2>
+        <p class="tag-uz">20 ta savol — grammatika va lug'at. Natija taxminiy CEFR/IELTS darajangizni ko'rsatadi.</p>
+        <p class="tag-en">20 questions — grammar and vocabulary. The result gives an approximate CEFR/IELTS level.</p>
+        <p class="tag-ru">20 вопросов — грамматика и словарь. Результат покажет примерный уровень CEFR/IELTS.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div id="testArea"></div>
+    </div>
+  </section>
+
+  <!-- ===================== GRAMMAR ===================== -->
+  <section class="view" id="view-grammar">
+    <div class="section-title">
+      <div><h2 class="tag-uz">Grammatika</h2><h2 class="tag-en">Grammar</h2><h2 class="tag-ru">Грамматика</h2></div>
+    </div>
+    <div class="grid cols-2" id="grammarList"></div>
+    <div class="card" id="grammarDetail" style="margin-top:18px; display:none;"></div>
+  </section>
+
+  <!-- ===================== VOCAB ===================== -->
+  <section class="view" id="view-vocab">
+    <div class="section-title">
+      <div><h2 class="tag-uz">Lug'at</h2><h2 class="tag-en">Vocabulary</h2><h2 class="tag-ru">Словарь</h2>
+      <p class="tag-uz">Kartani bosing — tarjima va misol chiqadi. IELTS mavzulari bo'yicha.</p>
+      <p class="tag-en">Tap a card to flip it and see the translation and an example.</p>
+      <p class="tag-ru">Нажмите на карточку, чтобы увидеть перевод и пример. По темам IELTS.</p></div>
+    </div>
+    <div id="vocabTopics"></div>
+  </section>
+
+  <!-- ===================== LISTENING ===================== -->
+  <section class="view" id="view-listening">
+    <div class="section-title">
+      <div><h2 class="tag-uz">Listening</h2><h2 class="tag-en">Listening</h2><h2 class="tag-ru">Аудирование</h2>
+      <p class="tag-uz">Brauzeringizning ovozli o'qish funksiyasi orqali matn ingliz tilida o'qib eshittiriladi. "Tinglash" tugmasini bosing, keyin savollarga javob bering.</p>
+      <p class="tag-en">The text is read aloud in English using your browser's speech feature. Press "Listen", then answer the questions.</p>
+      <p class="tag-ru">Текст озвучивается на английском языке с помощью функции синтеза речи вашего браузера. Нажмите «Слушать», затем ответьте на вопросы.</p></div>
+    </div>
+    <div id="listeningList"></div>
+  </section>
+
+  <!-- ===================== READING ===================== -->
+  <section class="view" id="view-reading">
+    <div class="section-title">
+      <div><h2 class="tag-uz">Reading</h2><h2 class="tag-en">Reading</h2><h2 class="tag-ru">Чтение</h2></div>
+    </div>
+    <div id="readingList"></div>
+  </section>
+
+  <!-- ===================== WRITING ===================== -->
+  <section class="view" id="view-writing">
+    <div class="section-title">
+      <div><h2 class="tag-uz">Writing</h2><h2 class="tag-en">Writing</h2><h2 class="tag-ru">Письмо</h2></div>
+    </div>
+    <div id="writingList"></div>
+  </section>
+
+  <!-- ===================== SPEAKING ===================== -->
+  <section class="view" id="view-speaking">
+    <div class="section-title">
+      <div><h2 class="tag-uz">Speaking</h2><h2 class="tag-en">Speaking</h2><h2 class="tag-ru">Говорение</h2>
+      <p class="tag-uz">Har bir promptni ovoz chiqarib javob bering. Taymer IELTS Speaking Part 2 formatiga mos (1 daqiqa tayyorgarlik, 2 daqiqa gapirish).</p>
+      <p class="tag-en">Answer each prompt out loud. The timer matches IELTS Speaking Part 2 (1 min prep, 2 min speaking).</p>
+      <p class="tag-ru">Отвечайте на каждый вопрос вслух. Таймер соответствует формату IELTS Speaking Part 2 (1 минута подготовки, 2 минуты ответа).</p></div>
+    </div>
+    <div id="speakingList"></div>
+  </section>
+
+  <!-- ===================== HOMEWORK ===================== -->
+  <section class="view" id="view-homework">
+    <div class="section-title">
+      <div><h2 class="tag-uz">Uyga vazifa</h2><h2 class="tag-en">Homework</h2><h2 class="tag-ru">Домашнее задание</h2></div>
+    </div>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3 class="tag-uz">Haftalik ro'yxat</h3>
+        <h3 class="tag-en">Weekly checklist</h3>
+        <h3 class="tag-ru">Еженедельный список</h3>
+        <div id="hwChecklist"></div>
+      </div>
+      <div class="card">
+        <h3 class="tag-uz">Aralash test (10 savol)</h3>
+        <h3 class="tag-en">Mixed practice test (10 questions)</h3>
+        <h3 class="tag-ru">Смешанный тест (10 вопросов)</h3>
+        <div id="hwTest"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROGRESS (linked from home) ===================== -->
+  <section class="view" id="view-progress">
+    <div class="section-title"><div><h2 class="tag-uz">Progress</h2><h2 class="tag-en">Progress</h2><h2 class="tag-ru">Прогресс</h2></div></div>
+    <div class="card" id="progressCard2"></div>
+    <div class="card" style="margin-top:16px;">
+      <h3 class="tag-uz">Ma'lumotlarni tozalash</h3>
+      <h3 class="tag-en">Reset data</h3>
+      <h3 class="tag-ru">Сбросить данные</h3>
+      <p class="muted tag-uz">Barcha progress shu brauzerda saqlanadi. Agar boshidan boshlamoqchi bo'lsangiz:</p>
+      <p class="muted tag-en">All progress is stored in this browser. To start over:</p>
+      <p class="muted tag-ru">Весь прогресс сохраняется в этом браузере. Чтобы начать заново:</p>
+      <button class="btn ghost" onclick="resetAll()"><span class="tag-uz">Hammasini tozalash</span><span class="tag-en">Reset everything</span><span class="tag-ru">Сбросить всё</span></button>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="tag-uz">Zinapoya — shaxsiy foydalanish uchun yaratilgan. Progress faqat shu qurilma/brauzerda saqlanadi.</span>
+  <span class="tag-en">Zinapoya — built for personal use. Progress is saved only on this device/browser.</span>
+  <span class="tag-ru">Zinapoya — создано для личного использования. Прогресс сохраняется только на этом устройстве/в этом браузере.</span>
+</footer>
+
+<script>
+/* ============================================================
+   STATE
+   ============================================================ */
+const STORE_KEY = 'zinapoya_state_v1';
+function loadState(){
+  try{
+    const raw = localStorage.getItem(STORE_KEY);
+    if(raw) return JSON.parse(raw);
+  }catch(e){}
+  return { lang:'uz', band:null, grammar:{}, vocab:{}, listening:{}, reading:{}, writing:{}, speaking:{}, hwChecklist:{}, hwTestBest:null };
+}
+function saveState(){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){} }
+let state = loadState();
+
+// 3-way language picker for text generated in JS
+function L3(uz, ru, en){ return state.lang==='ru' ? ru : (state.lang==='en' ? en : uz); }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+function goto(view){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  const el = document.getElementById('view-'+view);
+  if(el) el.classList.add('active');
+  document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.toggle('active', b.dataset.view===view));
+  window.scrollTo({top:0, behavior:'instant' in window ? 'instant':'auto'});
+}
+document.getElementById('tabs').addEventListener('click', e=>{
+  const btn = e.target.closest('button[data-view]');
+  if(btn) goto(btn.dataset.view);
+});
+
+function setLang(l){
+  state.lang = l; saveState();
+  document.body.setAttribute('data-lang', l);
+  document.getElementById('btnUz').classList.toggle('active', l==='uz');
+  document.getElementById('btnRu').classList.toggle('active', l==='ru');
+  document.getElementById('btnEn').classList.toggle('active', l==='en');
+}
+document.getElementById('btnUz').onclick=()=>setLang('uz');
+document.getElementById('btnRu').onclick=()=>setLang('ru');
+document.getElementById('btnEn').onclick=()=>setLang('en');
+
+function resetAll(){
+  const msg = L3("Barcha progress o'chiriladi. Davom etasizmi?", "Весь прогресс будет удалён. Продолжить?", "This will erase all progress. Continue?");
+  if(confirm(msg)){
+    localStorage.removeItem(STORE_KEY);
+    state = loadState();
+    location.reload();
+  }
+}
+
+/* ============================================================
+   LADDER SVG (band 1-9)
+   ============================================================ */
+function drawLadder(){
+  const svg = document.getElementById('ladderSvg');
+  const band = state.band || 0;
+  let out = '';
+  const n = 9;
+  const w = 320, stepH = 24, stepGap = 4, maxW = 260;
+  for(let i=1;i<=n;i++){
+    const y = 260 - i*(stepH+stepGap);
+    const sw = 90 + (i/n)*maxW;
+    const done = i<=band;
+    out += `<rect class="step ${done?'done':''}" x="${(w-sw)/2}" y="${y}" width="${sw}" height="${stepH}" rx="4"></rect>`;
+    out += `<text class="num" x="${(w-sw)/2 + 14}" y="${y+16}">${i}</text>`;
+  }
+  out += `<text x="160" y="24" text-anchor="middle" style="font-size:12px;">${L3('IELTS bandlar','Уровни IELTS','IELTS bands')}</text>`;
+  svg.innerHTML = out;
+}
+
+/* ============================================================
+   LEVEL TEST DATA (20 questions, progressive difficulty)
+   ============================================================ */
+const testQuestions = [
+ {q:"She ___ to the market every morning.",opts:["go","goes","going","gone"],a:1,band:2},
+ {q:"They ___ watching TV right now.",opts:["is","am","are","be"],a:2,band:2},
+ {q:"I have ___ finished my homework.",opts:["already","yet","still","ever"],a:0,band:3},
+ {q:"If it rains, we ___ stay home.",opts:["will","would","are","did"],a:0,band:3},
+ {q:"By next year, she ___ here for a decade.",opts:["will work","will have worked","works","worked"],a:1,band:6},
+ {q:"He suggested ___ the meeting.",opts:["to postpone","postponing","postpone","postponed"],a:1,band:5},
+ {q:"The report, ___ was written last week, is on your desk.",opts:["who","which","what","whom"],a:1,band:5},
+ {q:"Choose the correct word: The company's profits ___ significantly last quarter.",opts:["rose","raised","risen","rise"],a:0,band:5},
+ {q:"'Ubiquitous' means:",opts:["rare","present everywhere","expensive","hidden"],a:1,band:7},
+ {q:"Had I known earlier, I ___ differently.",opts:["would act","would have acted","will act","act"],a:1,band:7},
+ {q:"Choose the best synonym for 'meticulous':",opts:["careless","careful and precise","fast","lazy"],a:1,band:6},
+ {q:"The proposal was met with ___ scepticism from the board.",opts:["considerable","considering","considerably to","consider"],a:0,band:6},
+ {q:"'Not only ___ the exam, but she also won a scholarship.'",opts:["she passed","did she pass","she did pass","passed she"],a:1,band:8},
+ {q:"Choose the most natural phrase for academic writing:",opts:["a lot of researchers say","numerous researchers argue","loads of researchers think","tons of researchers claim"],a:1,band:7},
+ {q:"'Notwithstanding the delays, the project ___ completed on time.'",opts:["was","is","were","being"],a:0,band:8},
+ {q:"Which sentence uses a cleft structure correctly?",opts:["It was John who called.","It called John who was.","John was it who called.","Was it John called."],a:0,band:8},
+ {q:"'The findings ___ corroborate previous research.'",opts:["largely","large","largest","enlarge"],a:0,band:7},
+ {q:"Choose the option closest in meaning to 'a dwindling population':",opts:["a growing population","a shrinking population","a stable population","an aging population"],a:1,band:7},
+ {q:"'Rarely ___ such a compelling argument.'",opts:["I have heard","have I heard","I heard","did I heard"],a:1,band:9},
+ {q:"Which register fits a formal IELTS essay conclusion?",opts:["To sum up, this is a huge deal.","In conclusion, the evidence suggests that policy intervention is warranted.","So yeah, basically governments should do something.","Anyway, that's it."],a:1,band:9}
+];
+let testIdx = 0, testAnswers = [];
+function renderTest(){
+  const area = document.getElementById('testArea');
+  if(testIdx >= testQuestions.length){
+    let maxBandReached = 1;
+    let correctCount = 0;
+    testAnswers.forEach((ans,i)=>{
+      if(ans === testQuestions[i].a){ correctCount++; if(testQuestions[i].band > maxBandReached) maxBandReached = testQuestions[i].band; }
+    });
+    let scoreBand = Math.max(1, Math.round((correctCount/testQuestions.length)*9));
+    let finalBand = Math.round((scoreBand + Math.min(maxBandReached,9))/2);
+    finalBand = Math.min(9, Math.max(1, finalBand));
+    state.band = finalBand; saveState();
+    document.getElementById('bandBadgeVal').textContent = finalBand;
+    drawLadder();
+    area.innerHTML = `
+      <div class="result-box">
+        <div class="tag-uz">Taxminiy darajangiz:</div>
+        <div class="tag-en">Your approximate level:</div>
+        <div class="tag-ru">Ваш примерный уровень:</div>
+        <div class="bignum">Band ${finalBand}</div>
+        <p class="muted tag-uz">${correctCount}/${testQuestions.length} to'g'ri javob. Bu — mashg'ulotlarni qaysi darajadan boshlash kerakligini ko'rsatuvchi taxminiy natija, rasmiy IELTS bahosi emas.</p>
+        <p class="muted tag-en">${correctCount}/${testQuestions.length} correct. This is an approximate guide for where to start, not an official IELTS score.</p>
+        <p class="muted tag-ru">${correctCount}/${testQuestions.length} правильных ответов. Это приблизительный ориентир, с какого уровня начинать, а не официальный балл IELTS.</p>
+        <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;">
+          <button class="btn" onclick="goto('grammar')"><span class="tag-uz">Grammatikani boshlash</span><span class="tag-en">Start Grammar</span><span class="tag-ru">Начать грамматику</span></button>
+          <button class="btn ghost" onclick="testIdx=0; testAnswers=[]; renderTest();"><span class="tag-uz">Qayta topshirish</span><span class="tag-en">Retake test</span><span class="tag-ru">Пройти заново</span></button>
+        </div>
+      </div>`;
+    renderHome();
+    return;
+  }
+  const qq = testQuestions[testIdx];
+  area.innerHTML = `
+    <div class="progress-line">${L3('Savol','Вопрос','Question')} ${testIdx+1} / ${testQuestions.length}</div>
+    <div class="qcard">
+      <div class="qtext">${qq.q}</div>
+      <div class="opts">${qq.opts.map((o,i)=>`<button class="opt" data-i="${i}">${o}</button>`).join('')}</div>
+    </div>`;
+  area.querySelectorAll('.opt').forEach(btn=>{
+    btn.onclick = ()=>{
+      testAnswers.push(parseInt(btn.dataset.i));
+      testIdx++;
+      renderTest();
+    };
+  });
+}
+renderTest();
+
+/* ============================================================
+   GRAMMAR
+   ============================================================ */
+const grammarUnits = [
+ {id:'g1', level:'A2', title_uz:"Present Simple vs Present Continuous", title_en:"Present Simple vs Present Continuous", title_ru:"Present Simple и Present Continuous",
+  expl_uz:"Present Simple — odatiy, doimiy harakatlar uchun (I work every day). Present Continuous — hozir sodir bo'layotgan harakat uchun (I am working now).",
+  expl_ru:"Present Simple используется для привычных, регулярных действий (I work every day). Present Continuous — для действия, происходящего прямо сейчас (I am working now).",
+  q:[
+   {q:"Look! It ___ (rain).",opts:["rains","is raining","rain","rained"],a:1},
+   {q:"Water ___ at 100°C.",opts:["is boiling","boils","boil","boiled"],a:1},
+   {q:"She usually ___ coffee in the morning, but today she ___ tea.",opts:["drinks / is drinking","is drinking / drinks","drink / drinks","drinks / drink"],a:0}
+  ]},
+ {id:'g2', level:'B1', title_uz:"Present Perfect", title_en:"Present Perfect", title_ru:"Present Perfect",
+  expl_uz:"O'tmishda boshlanib, hozirgi vaqtga bog'liq yoki natijasi muhim bo'lgan harakatlar uchun: have/has + V3. Masalan: I have visited London twice.",
+  expl_ru:"Используется для действий, начавшихся в прошлом и связанных с настоящим или важных своим результатом: have/has + V3. Например: I have visited London twice.",
+  q:[
+   {q:"I ___ never ___ sushi before.",opts:["have / eaten","has / eat","did / eat","have / eat"],a:0},
+   {q:"___ you ever ___ to Japan?",opts:["Did / go","Have / been","Have / gone","Has / been"],a:1},
+   {q:"She ___ just ___ her homework.",opts:["has / finished","have / finish","is / finishing","did / finished"],a:0}
+  ]},
+ {id:'g3', level:'B2', title_uz:"Conditionals (0-3)", title_en:"Conditionals (0-3)", title_ru:"Условные предложения (0-3)",
+  expl_uz:"0-shart — umumiy haqiqat, 1-shart — real kelajak, 2-shart — noreal hozirgi/kelajak, 3-shart — noreal o'tmish (afsus).",
+  expl_ru:"0 тип — общая истина, 1 тип — реальное будущее, 2 тип — нереальное настоящее/будущее, 3 тип — нереальное прошлое (сожаление).",
+  q:[
+   {q:"If I ___ rich, I would travel the world.",opts:["am","was","were","will be"],a:2},
+   {q:"If you heat ice, it ___.",opts:["melts","will melt","melted","would melt"],a:0},
+   {q:"If she had studied harder, she ___ the exam.",opts:["would pass","would have passed","will pass","passed"],a:1}
+  ]},
+ {id:'g4', level:'B2', title_uz:"Passive Voice", title_en:"Passive Voice", title_ru:"Страдательный залог",
+  expl_uz:"Harakatni bajaruvchi emas, harakatning o'zi yoki natijasi muhim bo'lganda ishlatiladi: be + V3. Masalan: The report was written by the team.",
+  expl_ru:"Используется, когда важно само действие или его результат, а не исполнитель: be + V3. Например: The report was written by the team.",
+  q:[
+   {q:"The bridge ___ in 1990.",opts:["built","was built","builds","building"],a:1},
+   {q:"English ___ all over the world.",opts:["is spoken","speaks","spoke","is speaking"],a:0},
+   {q:"The email ___ by tomorrow.",opts:["will send","will be sent","sends","sent"],a:1}
+  ]},
+ {id:'g5', level:'C1', title_uz:"Relative Clauses", title_en:"Relative Clauses", title_ru:"Относительные придаточные",
+  expl_uz:"Qo'shimcha ma'lumot berish uchun who/which/whose/where ishlatiladi. Defining va non-defining clause farqiga e'tibor bering (vergul bilan/vergulsiz).",
+  expl_ru:"Для дополнительной информации используются who/which/whose/where. Обратите внимание на разницу между defining и non-defining clause (без запятой/с запятой).",
+  q:[
+   {q:"The man ___ car was stolen called the police.",opts:["who","which","whose","whom"],a:2},
+   {q:"This is the city ___ I was born.",opts:["which","where","who","whose"],a:1},
+   {q:"My brother, ___ lives in London, is visiting us.",opts:["that","who","which","whose"],a:1}
+  ]},
+ {id:'g6', level:'C1-C2', title_uz:"Inversion va Advanced Structures (IELTS Writing uchun)", title_en:"Inversion and Advanced Structures (for IELTS Writing)", title_ru:"Инверсия и продвинутые конструкции (для IELTS Writing)",
+  expl_uz:"Yuqori bal olish uchun jumlani inversiya bilan boshlash mumkin: Not only..., Rarely..., Had I known... Bu formal, akademik uslub uchun juda foydali.",
+  expl_ru:"Для высокого балла предложение можно начинать с инверсии: Not only..., Rarely..., Had I known... Это полезно для формального, академического стиля.",
+  q:[
+   {q:"___ did I realise how difficult it would be.",opts:["Never before","I never before","Before never","Never did before"],a:0},
+   {q:"___ he apologise, but he also offered compensation.",opts:["Not only did","Not only","Did not only","Only not did"],a:0},
+   {q:"___ the weather improved, would the match continue.",opts:["Only if","If only","Unless","Only when"],a:0}
+  ]}
+];
+function renderGrammarList(){
+  const wrap = document.getElementById('grammarList');
+  wrap.innerHTML = grammarUnits.map(u=>{
+    const done = state.grammar[u.id]?.done;
+    return `<div class="card" style="cursor:pointer;" onclick="openGrammar('${u.id}')">
+      <span class="pill">${u.level}</span> ${done?'<span class="pill" style="background:#E4F3EA;color:#2E6B4F;">✓</span>':''}
+      <h3 class="tag-uz" style="margin-top:10px;">${u.title_uz}</h3>
+      <h3 class="tag-en" style="margin-top:10px;">${u.title_en}</h3>
+      <h3 class="tag-ru" style="margin-top:10px;">${u.title_ru}</h3>
+      <p class="muted tag-uz">${u.expl_uz.slice(0,70)}…</p>
+      <p class="muted tag-en">Practice this grammar point with 3 quick questions.</p>
+      <p class="muted tag-ru">${u.expl_ru.slice(0,70)}…</p>
+    </div>`;
+  }).join('');
+}
+function openGrammar(id){
+  const u = grammarUnits.find(x=>x.id===id);
+  const det = document.getElementById('grammarDetail');
+  det.style.display='block';
+  let answered = state.grammar[id]?.answers || [];
+  function render(){
+    det.innerHTML = `
+      <h3 class="tag-uz">${u.title_uz} <span class="pill">${u.level}</span></h3>
+      <h3 class="tag-en">${u.title_en} <span class="pill">${u.level}</span></h3>
+      <h3 class="tag-ru">${u.title_ru} <span class="pill">${u.level}</span></h3>
+      <p class="tag-uz">${u.expl_uz}</p>
+      <p class="tag-en">Read the Uzbek or Russian explanation above for the rule, then practise with the examples below.</p>
+      <p class="tag-ru">${u.expl_ru}</p>
+      <div class="divider"></div>
+      ${u.q.map((qq,i)=>{
+        const chosen = answered[i];
+        return `<div class="qcard">
+          <div class="qtext">${i+1}. ${qq.q}</div>
+          <div class="opts">${qq.opts.map((o,oi)=>{
+            let cls='opt';
+            if(chosen!==undefined){
+              if(oi===qq.a) cls+=' correct';
+              else if(oi===chosen) cls+=' wrong';
+            }
+            return `<button class="${cls}" ${chosen!==undefined?'disabled':''} onclick="answerGrammar('${id}',${i},${oi})">${o}</button>`;
+          }).join('')}</div>
+        </div>`;
+      }).join('')}
+    `;
+  }
+  render();
+  window._renderGrammarDetail = render;
+  det.scrollIntoView({behavior:'smooth', block:'start'});
+}
+function answerGrammar(id, qi, oi){
+  if(!state.grammar[id]) state.grammar[id] = {answers:[]};
+  state.grammar[id].answers[qi] = oi;
+  const u = grammarUnits.find(x=>x.id===id);
+  if(state.grammar[id].answers.filter(a=>a!==undefined).length >= u.q.length) state.grammar[id].done = true;
+  saveState();
+  window._renderGrammarDetail();
+  renderGrammarList();
+  renderHome();
+}
+
+/* ============================================================
+   VOCABULARY
+   ============================================================ */
+const vocabTopics = [
+ {id:'v1', name_uz:"Atrof-muhit", name_en:"Environment", name_ru:"Окружающая среда", words:[
+   {w:"sustainable", pos:"adj", tr:"barqaror", tr_ru:"устойчивый", ex:"We need sustainable energy sources."},
+   {w:"deforestation", pos:"n", tr:"o'rmonlarni yo'q qilish", tr_ru:"вырубка лесов", ex:"Deforestation is a major cause of climate change."},
+   {w:"emission", pos:"n", tr:"chiqindi (gaz)", tr_ru:"выброс (газов)", ex:"Carbon emissions must be reduced."},
+   {w:"conservation", pos:"n", tr:"muhofaza qilish", tr_ru:"охрана природы", ex:"Wildlife conservation protects endangered species."},
+   {w:"renewable", pos:"adj", tr:"qayta tiklanadigan", tr_ru:"возобновляемый", ex:"Solar power is a renewable resource."},
+   {w:"pollutant", pos:"n", tr:"ifloslantiruvchi modda", tr_ru:"загрязняющее вещество", ex:"Factories release harmful pollutants."}
+ ]},
+ {id:'v2', name_uz:"Ta'lim", name_en:"Education", name_ru:"Образование", words:[
+   {w:"curriculum", pos:"n", tr:"o'quv dasturi", tr_ru:"учебная программа", ex:"The school updated its curriculum this year."},
+   {w:"literacy", pos:"n", tr:"savodxonlik", tr_ru:"грамотность", ex:"Literacy rates have improved significantly."},
+   {w:"tuition", pos:"n", tr:"o'qish to'lovi", tr_ru:"плата за обучение", ex:"University tuition fees are rising."},
+   {w:"vocational", pos:"adj", tr:"kasb-hunar", tr_ru:"профессионально-технический", ex:"Vocational training prepares students for specific jobs."},
+   {w:"assessment", pos:"n", tr:"baholash", tr_ru:"оценивание", ex:"Continuous assessment is common in modern schools."},
+   {w:"scholarship", pos:"n", tr:"stipendiya", tr_ru:"стипендия", ex:"She won a scholarship to study abroad."}
+ ]},
+ {id:'v3', name_uz:"Texnologiya", name_en:"Technology", name_ru:"Технологии", words:[
+   {w:"innovation", pos:"n", tr:"innovatsiya", tr_ru:"инновация", ex:"The company is known for constant innovation."},
+   {w:"obsolete", pos:"adj", tr:"eskirgan", tr_ru:"устаревший", ex:"This technology quickly became obsolete."},
+   {w:"artificial intelligence", pos:"n", tr:"sun'iy intellekt", tr_ru:"искусственный интеллект", ex:"Artificial intelligence is changing many industries."},
+   {w:"breakthrough", pos:"n", tr:"muhim kashfiyot", tr_ru:"прорыв", ex:"Scientists made a major breakthrough."},
+   {w:"automation", pos:"n", tr:"avtomatlashtirish", tr_ru:"автоматизация", ex:"Automation has reduced manual labour."},
+   {w:"cybersecurity", pos:"n", tr:"kiberxavfsizlik", tr_ru:"кибербезопасность", ex:"Cybersecurity is a growing concern for businesses."}
+ ]},
+ {id:'v4', name_uz:"Salomatlik", name_en:"Health", name_ru:"Здоровье", words:[
+   {w:"chronic", pos:"adj", tr:"surunkali", tr_ru:"хронический", ex:"Diabetes is a chronic condition."},
+   {w:"sedentary", pos:"adj", tr:"harakatsiz (turmush tarzi)", tr_ru:"малоподвижный (образ жизни)", ex:"A sedentary lifestyle increases health risks."},
+   {w:"nutritious", pos:"adj", tr:"to'yimli", tr_ru:"питательный", ex:"A nutritious diet supports overall health."},
+   {w:"epidemic", pos:"n", tr:"epidemiya", tr_ru:"эпидемия", ex:"The country faced an obesity epidemic."},
+   {w:"well-being", pos:"n", tr:"farovonlik, sog'lik", tr_ru:"благополучие", ex:"Mental well-being is as important as physical health."},
+   {w:"vaccination", pos:"n", tr:"emlash", tr_ru:"вакцинация", ex:"Vaccination programmes save millions of lives."}
+ ]}
+];
+function renderVocab(){
+  const wrap = document.getElementById('vocabTopics');
+  wrap.innerHTML = vocabTopics.map(t=>`
+    <div class="card" style="margin-bottom:18px;">
+      <h3 class="tag-uz">${t.name_uz}</h3>
+      <h3 class="tag-en">${t.name_en}</h3>
+      <h3 class="tag-ru">${t.name_ru}</h3>
+      <div class="grid cols-3">
+        ${t.words.map((w,i)=>`
+          <div class="flip" id="flip-${t.id}-${i}" onclick="document.getElementById('flip-${t.id}-${i}').classList.toggle('flipped')">
+            <div class="flip-inner">
+              <div class="flip-face flip-front">
+                <div class="w">${w.w}</div>
+                <div class="pos">${w.pos}</div>
+              </div>
+              <div class="flip-face flip-back">
+                <div class="tr">${L3(w.tr, w.tr_ru, w.tr)}</div>
+                <div class="ex">${w.ex}</div>
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      <div style="margin-top:14px;">
+        <button class="btn ghost" onclick="markVocabDone('${t.id}')">
+          <span class="tag-uz">${state.vocab[t.id]?'✓ O\\'rganildi':'O\\'rganilgan deb belgilash'}</span>
+          <span class="tag-en">${state.vocab[t.id]?'✓ Learned':'Mark as learned'}</span>
+          <span class="tag-ru">${state.vocab[t.id]?'✓ Изучено':'Отметить как изученное'}</span>
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+function markVocabDone(id){
+  state.vocab[id] = true; saveState(); renderVocab(); renderHome();
+}
+
+/* ============================================================
+   LISTENING
+   ============================================================ */
+const listeningItems = [
+ {id:'l1', level:'A2-B1', title_uz:"Kundalik tartib", title_en:"Daily routine", title_ru:"Распорядок дня",
+  text:"Maria wakes up at seven every morning. She has breakfast, then walks to work because her office is close to her home. She usually finishes work at five and cooks dinner with her sister.",
+  q:[
+   {q:"What time does Maria wake up?",opts:["Six","Seven","Eight"],a:1},
+   {q:"How does she get to work?",opts:["By bus","She walks","By car"],a:1},
+   {q:"Who does she cook dinner with?",opts:["Her mother","Her sister","Her friend"],a:1}
+  ]},
+ {id:'l2', level:'B2', title_uz:"Ish intervyusi", title_en:"A job interview", title_ru:"Собеседование на работу",
+  text:"During the interview, the candidate explained that she had managed a team of ten people for three years. She emphasised her experience in project management and her ability to work under pressure.",
+  q:[
+   {q:"How many people did she manage?",opts:["Five","Ten","Twenty"],a:1},
+   {q:"For how long did she manage the team?",opts:["One year","Two years","Three years"],a:2},
+   {q:"What skill did she emphasise besides project management?",opts:["Public speaking","Working under pressure","Coding"],a:1}
+  ]},
+ {id:'l3', level:'C1', title_uz:"Ilmiy ma'ruza qismi", title_en:"Academic lecture excerpt", title_ru:"Отрывок из академической лекции",
+  text:"Recent studies suggest that urban green spaces significantly reduce stress levels among city residents. Researchers argue that even brief exposure to nature can improve concentration and overall mental well-being.",
+  q:[
+   {q:"What do urban green spaces reduce?",opts:["Traffic","Stress levels","Pollution"],a:1},
+   {q:"What can brief exposure to nature improve, besides concentration?",opts:["Income","Mental well-being","Sleep schedule"],a:1},
+   {q:"Who makes this argument?",opts:["Politicians","Researchers","Journalists"],a:1}
+  ]}
+];
+function speak(text){
+  if(!('speechSynthesis' in window)){ alert(L3("Brauzeringiz ovozli o'qishni qo'llab-quvvatlamaydi.","Ваш браузер не поддерживает синтез речи.","Your browser doesn't support speech synthesis.")); return; }
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang='en-US'; u.rate=0.92;
+  window.speechSynthesis.speak(u);
+}
+function renderListening(){
+  const wrap = document.getElementById('listeningList');
+  wrap.innerHTML = listeningItems.map(it=>{
+    const answered = state.listening[it.id]?.answers || [];
+    return `<div class="card" style="margin-bottom:18px;">
+      <span class="pill">${it.level}</span>
+      <h3 class="tag-uz" style="margin-top:10px;">${it.title_uz}</h3>
+      <h3 class="tag-en" style="margin-top:10px;">${it.title_en}</h3>
+      <h3 class="tag-ru" style="margin-top:10px;">${it.title_ru}</h3>
+      <button class="btn ghost" onclick="speak(\`${it.text.replace(/`/g,"'")}\`)">▶ <span class="tag-uz">Tinglash</span><span class="tag-en">Listen</span><span class="tag-ru">Слушать</span></button>
+      <div class="divider"></div>
+      ${it.q.map((qq,i)=>{
+        const chosen = answered[i];
+        return `<div class="qcard">
+          <div class="qtext">${i+1}. ${qq.q}</div>
+          <div class="opts">${qq.opts.map((o,oi)=>{
+            let cls='opt';
+            if(chosen!==undefined){ if(oi===qq.a) cls+=' correct'; else if(oi===chosen) cls+=' wrong'; }
+            return `<button class="${cls}" ${chosen!==undefined?'disabled':''} onclick="answerListening('${it.id}',${i},${oi})">${o}</button>`;
+          }).join('')}</div>
+        </div>`;
+      }).join('')}
+    </div>`;
+  }).join('');
+}
+function answerListening(id, qi, oi){
+  if(!state.listening[id]) state.listening[id] = {answers:[]};
+  state.listening[id].answers[qi] = oi;
+  const it = listeningItems.find(x=>x.id===id);
+  if(state.listening[id].answers.filter(a=>a!==undefined).length >= it.q.length) state.listening[id].done = true;
+  saveState(); renderListening(); renderHome();
+}
+
+/* ============================================================
+   READING
+   ============================================================ */
+const readingItems = [
+ {id:'r1', level:'B1-B2', title_uz:"Shahar transporti", title_en:"Urban transport", title_ru:"Городской транспорт",
+  passage_en:"<p>Many cities around the world are investing heavily in public transport to reduce traffic congestion and air pollution. Buses, trams and metro systems allow large numbers of people to travel efficiently without relying on private cars.</p><p>However, building new transport infrastructure is expensive and can take many years. Critics argue that governments should also encourage cycling and walking, which require far less investment and have additional health benefits for the population.</p>",
+  q:[
+   {q:"According to the passage, why do cities invest in public transport?",opts:["To increase car sales","To reduce congestion and pollution","To attract tourists"],a:1},
+   {q:"What is mentioned as a drawback of new transport infrastructure?",opts:["It is unpopular","It is expensive and slow to build","It increases pollution"],a:1},
+   {q:"What do critics suggest as an alternative?",opts:["More parking spaces","Cycling and walking","Higher taxes"],a:1}
+  ]},
+ {id:'r2', level:'C1', title_uz:"Uzoq masofada ishlash", title_en:"Remote work", title_ru:"Удалённая работа",
+  passage_en:"<p>The shift towards remote work, accelerated by recent global events, has fundamentally altered expectations around where and how people work. Proponents highlight increased flexibility, reduced commuting time, and improved work-life balance as key advantages.</p><p>Nevertheless, sceptics point to the erosion of workplace culture and the difficulty of collaborating effectively across time zones. Some organisations have adopted hybrid models in an attempt to reconcile these competing priorities, though the long-term consequences of this shift remain uncertain.</p>",
+  q:[
+   {q:"What is cited as an advantage of remote work?",opts:["Lower salaries","Improved work-life balance","More meetings"],a:1},
+   {q:"What concern do sceptics raise?",opts:["Higher office costs","Erosion of workplace culture","Increased pollution"],a:1},
+   {q:"What have some organisations adopted to balance both sides?",opts:["Hybrid models","Four-day weeks","Fully remote policies only"],a:0}
+  ]}
+];
+function renderReading(){
+  const wrap = document.getElementById('readingList');
+  wrap.innerHTML = readingItems.map(it=>{
+    const answered = state.reading[it.id]?.answers || [];
+    return `<div class="card" style="margin-bottom:18px;">
+      <span class="pill">${it.level}</span>
+      <h3 class="tag-uz" style="margin-top:10px;">${it.title_uz}</h3>
+      <h3 class="tag-en" style="margin-top:10px;">${it.title_en}</h3>
+      <h3 class="tag-ru" style="margin-top:10px;">${it.title_ru}</h3>
+      <div class="passage">${it.passage_en}</div>
+      ${it.q.map((qq,i)=>{
+        const chosen = answered[i];
+        return `<div class="qcard">
+          <div class="qtext">${i+1}. ${qq.q}</div>
+          <div class="opts">${qq.opts.map((o,oi)=>{
+            let cls='opt';
+            if(chosen!==undefined){ if(oi===qq.a) cls+=' correct'; else if(oi===chosen) cls+=' wrong'; }
+            return `<button class="${cls}" ${chosen!==undefined?'disabled':''} onclick="answerReading('${it.id}',${i},${oi})">${o}</button>`;
+          }).join('')}</div>
+        </div>`;
+      }).join('')}
+    </div>`;
+  }).join('');
+}
+function answerReading(id, qi, oi){
+  if(!state.reading[id]) state.reading[id] = {answers:[]};
+  state.reading[id].answers[qi] = oi;
+  const it = readingItems.find(x=>x.id===id);
+  if(state.reading[id].answers.filter(a=>a!==undefined).length >= it.q.length) state.reading[id].done = true;
+  saveState(); renderReading(); renderHome();
+}
+
+/* ============================================================
+   WRITING
+   ============================================================ */
+const writingTasks = [
+ {id:'w1', label:'Task 1', title_uz:"Diagramma tavsifi", title_en:"Describing a chart", title_ru:"Описание диаграммы",
+  prompt_uz:"Quyidagi diagramma 2010–2020 yillarda uchta mamlakatda internetdan foydalanuvchilar foizini ko'rsatadi (o'zingiz raqamlarni tasavvur qiling). Asosiy tendensiyalarni tasvirlab bering va taqqoslang. Kamida 150 so'z yozing.",
+  prompt_en:"The chart shows internet usage (%) in three countries from 2010 to 2020 (imagine plausible figures). Summarise the main trends and make comparisons. Write at least 150 words.",
+  prompt_ru:"Диаграмма показывает процент пользователей интернета в трёх странах с 2010 по 2020 год (представьте правдоподобные цифры). Опишите основные тенденции и сравните их. Напишите не менее 150 слов.",
+  min:150},
+ {id:'w2', label:'Task 2', title_uz:"Insho: fikringizni bildiring", title_en:"Essay: give your opinion", title_ru:"Эссе: выразите своё мнение",
+  prompt_uz:"Ba'zilar internet ta'limni yaxshiladi, deb hisoblaydi, boshqalari esa u chalg'itadi, deb ta'kidlaydi. Ikkala nuqtai nazarni ko'rib chiqing va o'z fikringizni bildiring. Kamida 250 so'z yozing.",
+  prompt_en:"Some people believe the internet has improved education, while others argue it is a distraction. Discuss both views and give your own opinion. Write at least 250 words.",
+  prompt_ru:"Одни считают, что интернет улучшил образование, другие утверждают, что он отвлекает. Рассмотрите обе точки зрения и выразите своё мнение. Напишите не менее 250 слов.",
+  min:250}
+];
+function wordCount(text){ return (text.trim().match(/\S+/g)||[]).length; }
+function renderWriting(){
+  const wrap = document.getElementById('writingList');
+  wrap.innerHTML = writingTasks.map(t=>{
+    const saved = state.writing[t.id]?.text || '';
+    return `<div class="card" style="margin-bottom:18px;">
+      <span class="pill">${t.label}</span>
+      <h3 class="tag-uz" style="margin-top:10px;">${t.title_uz}</h3>
+      <h3 class="tag-en" style="margin-top:10px;">${t.title_en}</h3>
+      <h3 class="tag-ru" style="margin-top:10px;">${t.title_ru}</h3>
+      <p class="tag-uz">${t.prompt_uz}</p>
+      <p class="tag-en">${t.prompt_en}</p>
+      <p class="tag-ru">${t.prompt_ru}</p>
+      <textarea id="wtext-${t.id}" placeholder="${L3('Shu yerga yozing...','Пишите здесь...','Write here...')}" oninput="onWriteInput('${t.id}')">${saved}</textarea>
+      <div class="wordcount"><span id="wcount-${t.id}">${wordCount(saved)}</span> / ${t.min} <span class="tag-uz">so'z</span><span class="tag-en">words</span><span class="tag-ru">слов</span></div>
+    </div>`;
+  }).join('');
+}
+let writeTimers = {};
+function onWriteInput(id){
+  const val = document.getElementById('wtext-'+id).value;
+  document.getElementById('wcount-'+id).textContent = wordCount(val);
+  clearTimeout(writeTimers[id]);
+  writeTimers[id] = setTimeout(()=>{
+    if(!state.writing[id]) state.writing[id] = {};
+    state.writing[id].text = val;
+    state.writing[id].done = wordCount(val) >= (writingTasks.find(t=>t.id===id).min);
+    saveState();
+    renderHome();
+  }, 500);
+}
+
+/* ============================================================
+   SPEAKING
+   ============================================================ */
+const speakingCues = [
+ {id:'s1', part:'Part 1', title_uz:"Oddiy savollar", title_en:"Simple questions", title_ru:"Простые вопросы",
+  points_uz:["O'zingiz haqingizda gapirib bering","Bo'sh vaqtingizda nima qilasiz?","Siz qayerda o'sgansiz?"],
+  points_en:["Tell me about yourself","What do you do in your free time?","Where did you grow up?"],
+  points_ru:["Расскажите о себе","Чем вы занимаетесь в свободное время?","Где вы выросли?"], prep:0, speak:60},
+ {id:'s2', part:'Part 2', title_uz:"Cue Card: Xotirada qolgan sayohat", title_en:"Cue Card: A memorable trip", title_ru:"Cue Card: Запоминающаяся поездка",
+  points_uz:["Qayerga borgansiz","Kim bilan borgansiz","Nima qilgansiz","Nega bu esda qolgan"],
+  points_en:["Where you went","Who you went with","What you did","Why it was memorable"],
+  points_ru:["Куда вы поехали","С кем вы поехали","Что вы делали","Почему это запомнилось"], prep:60, speak:120},
+ {id:'s3', part:'Part 3', title_uz:"Chuqurroq muhokama", title_en:"Deeper discussion", title_ru:"Более глубокое обсуждение",
+  points_uz:["Sayohat insonlarni qanday o'zgartiradi?","Kelajakda sayohat qanday o'zgaradi deb o'ylaysiz?"],
+  points_en:["How does travel change people?","How do you think travel will change in the future?"],
+  points_ru:["Как путешествия меняют людей?","Как, по-вашему, изменятся путешествия в будущем?"], prep:30, speak:90}
+];
+function renderSpeaking(){
+  const wrap = document.getElementById('speakingList');
+  wrap.innerHTML = speakingCues.map(c=>`
+    <div class="card cue" style="margin-bottom:18px;">
+      <span class="pill">${c.part}</span>
+      <h4 class="tag-uz">${c.title_uz}</h4>
+      <h4 class="tag-en">${c.title_en}</h4>
+      <h4 class="tag-ru">${c.title_ru}</h4>
+      <ul class="tag-uz">${c.points_uz.map(p=>`<li>${p}</li>`).join('')}</ul>
+      <ul class="tag-en">${c.points_en.map(p=>`<li>${p}</li>`).join('')}</ul>
+      <ul class="tag-ru">${c.points_ru.map(p=>`<li>${p}</li>`).join('')}</ul>
+      <div class="timer" id="timer-${c.id}">--:--</div>
+      <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+        <button class="btn" onclick="startSpeaking('${c.id}')"><span class="tag-uz">Boshlash</span><span class="tag-en">Start</span><span class="tag-ru">Начать</span></button>
+        <button class="btn ghost" onclick="markSpeakingDone('${c.id}')">${state.speaking[c.id]?'✓':''} <span class="tag-uz">Bajarildi deb belgilash</span><span class="tag-en">Mark as done</span><span class="tag-ru">Отметить как выполнено</span></button>
+      </div>
+    </div>
+  `).join('');
+}
+let speakTimerInterval = null;
+function startSpeaking(id){
+  const c = speakingCues.find(x=>x.id===id);
+  clearInterval(speakTimerInterval);
+  let phase = c.prep>0 ? 'prep' : 'speak';
+  let remaining = c.prep>0 ? c.prep : c.speak;
+  const el = document.getElementById('timer-'+id);
+  function tick(){
+    const m = Math.floor(remaining/60), s = remaining%60;
+    el.textContent = (phase==='prep' ? L3('Tayyorgarlik ','Подготовка ','Prep ') : L3('Gapiring ','Говорите ','Speak ')) + String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+    if(remaining<=0){
+      if(phase==='prep'){ phase='speak'; remaining=c.speak; }
+      else { clearInterval(speakTimerInterval); el.textContent = L3('Tugadi ✓','Готово ✓','Finished ✓'); return; }
+    }
+    remaining--;
+  }
+  tick();
+  speakTimerInterval = setInterval(tick, 1000);
+}
+function markSpeakingDone(id){ state.speaking[id]=true; saveState(); renderSpeaking(); renderHome(); }
+
+/* ============================================================
+   HOMEWORK
+   ============================================================ */
+const hwWeekly = [
+ {id:'hw1', uz:"3 ta yangi so'zni yozib, jumla tuzing", en:"Write 3 new words in a sentence", ru:"Напишите 3 новых слова в предложениях"},
+ {id:'hw2', uz:"1 ta grammatika bo'limini tugating", en:"Complete 1 grammar unit", ru:"Пройдите 1 раздел грамматики"},
+ {id:'hw3', uz:"1 ta listening mashqini eshiting va javob bering", en:"Listen to 1 listening exercise and answer", ru:"Прослушайте 1 упражнение на аудирование и ответьте"},
+ {id:'hw4', uz:"1 ta reading matnini o'qing", en:"Read 1 reading passage", ru:"Прочитайте 1 текст"},
+ {id:'hw5', uz:"Writing Task 2 uchun qoralama yozing", en:"Draft a Writing Task 2 answer", ru:"Напишите черновик ответа Writing Task 2"},
+ {id:'hw6', uz:"1 ta speaking cue card bo'yicha gapiring", en:"Speak on 1 speaking cue card", ru:"Ответьте по 1 speaking cue card"}
+];
+function renderHwChecklist(){
+  const wrap = document.getElementById('hwChecklist');
+  wrap.innerHTML = hwWeekly.map(h=>{
+    const done = !!state.hwChecklist[h.id];
+    return `<div class="hw-item ${done?'done':''}">
+      <input type="checkbox" id="chk-${h.id}" ${done?'checked':''} onchange="toggleHw('${h.id}')">
+      <label for="chk-${h.id}"><span class="tag-uz">${h.uz}</span><span class="tag-en">${h.en}</span><span class="tag-ru">${h.ru}</span></label>
+    </div>`;
+  }).join('');
+}
+function toggleHw(id){
+  state.hwChecklist[id] = !state.hwChecklist[id];
+  saveState(); renderHwChecklist(); renderHome();
+}
+const hwMixed = [
+ {q:"She ___ in London since 2015.",opts:["lives","has lived","lived","is living"],a:1},
+ {q:"If I ___ you, I would apologise.",opts:["am","was","were","be"],a:2},
+ {q:"The results ___ by the committee next week.",opts:["will announce","will be announced","announce","are announcing"],a:1},
+ {q:"Choose the synonym for 'abundant':",opts:["scarce","plentiful","tiny","hidden"],a:1},
+ {q:"The book ___ I bought yesterday is excellent.",opts:["who","which","whom","whose"],a:1},
+ {q:"'Renewable energy' refers to:",opts:["Energy that runs out","Energy that can be replenished naturally","Nuclear energy only","Imported energy"],a:1},
+ {q:"Not until he apologised ___ she forgive him.",opts:["did","she did","had","would"],a:0},
+ {q:"Choose the best word: The team showed great ___ under pressure.",opts:["resilience","resilient","resiliently","resile"],a:0},
+ {q:"'Literacy' most closely relates to:",opts:["Ability to read and write","Ability to swim","Ability to calculate","Ability to drive"],a:0},
+ {q:"Which is the most formal way to start a conclusion?",opts:["So basically","To conclude","Anyway","In a nutshell, like"],a:1}
+];
+function renderHwTest(){
+  const wrap = document.getElementById('hwTest');
+  let idx = 0; let answers = [];
+  function render(){
+    if(idx>=hwMixed.length){
+      const correct = answers.filter((a,i)=>a===hwMixed[i].a).length;
+      const best = state.hwTestBest===null||state.hwTestBest===undefined ? correct : Math.max(state.hwTestBest, correct);
+      state.hwTestBest = best; saveState(); renderHome();
+      wrap.innerHTML = `<div class="result-box">
+        <div class="bignum">${correct}/10</div>
+        <p class="tag-uz">Eng yaxshi natijangiz: ${best}/10</p>
+        <p class="tag-en">Your best score: ${best}/10</p>
+        <p class="tag-ru">Ваш лучший результат: ${best}/10</p>
+        <button class="btn ghost" onclick="renderHwTest()"><span class="tag-uz">Qayta urinish</span><span class="tag-en">Try again</span><span class="tag-ru">Попробовать снова</span></button>
+      </div>`;
+      return;
+    }
+    const qq = hwMixed[idx];
+    wrap.innerHTML = `<div class="progress-line">${idx+1} / 10</div>
+      <div class="qcard"><div class="qtext">${qq.q}</div>
+      <div class="opts">${qq.opts.map((o,i)=>`<button class="opt" onclick="hwAnswer(${i})">${o}</button>`).join('')}</div></div>`;
+  }
+  window.hwAnswer = function(i){ answers.push(i); idx++; render(); };
+  render();
+}
+
+/* ============================================================
+   HOME / PROGRESS
+   ============================================================ */
+function pct(done, total){ return total? Math.round(done/total*100) : 0; }
+function computeProgress(){
+  const g = grammarUnits.filter(u=>state.grammar[u.id]?.done).length;
+  const v = vocabTopics.filter(t=>state.vocab[t.id]).length;
+  const l = listeningItems.filter(i=>state.listening[i.id]?.done).length;
+  const r = readingItems.filter(i=>state.reading[i.id]?.done).length;
+  const w = writingTasks.filter(t=>state.writing[t.id]?.done).length;
+  const s = speakingCues.filter(c=>state.speaking[c.id]).length;
+  return [
+    {label_uz:"Grammatika", label_en:"Grammar", label_ru:"Грамматика", done:g, total:grammarUnits.length},
+    {label_uz:"Lug'at", label_en:"Vocabulary", label_ru:"Словарь", done:v, total:vocabTopics.length},
+    {label_uz:"Listening", label_en:"Listening", label_ru:"Аудирование", done:l, total:listeningItems.length},
+    {label_uz:"Reading", label_en:"Reading", label_ru:"Чтение", done:r, total:readingItems.length},
+    {label_uz:"Writing", label_en:"Writing", label_ru:"Письмо", done:w, total:writingTasks.length},
+    {label_uz:"Speaking", label_en:"Speaking", label_ru:"Говорение", done:s, total:speakingCues.length},
+  ];
+}
+function renderProgressBars(target){
+  const rows = computeProgress();
+  target.innerHTML = rows.map(r=>`
+    <div class="pbar-row">
+      <div class="label"><span class="tag-uz">${r.label_uz}</span><span class="tag-en">${r.label_en}</span><span class="tag-ru">${r.label_ru}</span></div>
+      <div class="pbar-track"><div class="pbar-fill" style="width:${pct(r.done,r.total)}%"></div></div>
+      <div class="pbar-pct">${r.done}/${r.total}</div>
+    </div>`).join('');
+}
+const homeCardDefs = [
+ {view:'test', uz:"Daraja testi", en:"Level test", ru:"Тест уровня", d_uz:"20 savolli qisqa test bilan boshlang'ich darajangizni bilib oling.", d_en:"Find your starting level with a short 20-question test.", d_ru:"Определите свой начальный уровень с помощью короткого теста из 20 вопросов."},
+ {view:'grammar', uz:"Grammatika", en:"Grammar", ru:"Грамматика", d_uz:"A2 dan C2 gacha 6 ta modul, har birida mashqlar.", d_en:"6 units from A2 to C2, each with practice.", d_ru:"6 модулей от A2 до C2, в каждом — практика."},
+ {view:'vocab', uz:"Lug'at", en:"Vocabulary", ru:"Словарь", d_uz:"IELTS mavzulari bo'yicha flashcardlar.", d_en:"Flashcards organised by IELTS topics.", d_ru:"Карточки по темам IELTS."},
+ {view:'listening', uz:"Listening", en:"Listening", ru:"Аудирование", d_uz:"Brauzer orqali ovozli matnlar va savollar.", d_en:"Audio via your browser's voice, with questions.", d_ru:"Аудио через голос браузера, с вопросами."},
+ {view:'reading', uz:"Reading", en:"Reading", ru:"Чтение", d_uz:"Akademik matnlar va tushunish savollari.", d_en:"Academic passages with comprehension questions.", d_ru:"Академические тексты с вопросами на понимание."},
+ {view:'writing', uz:"Writing", en:"Writing", ru:"Письмо", d_uz:"Task 1 va Task 2 — so'z hisoblagich bilan.", d_en:"Task 1 and Task 2 — with a word counter.", d_ru:"Task 1 и Task 2 — со счётчиком слов."},
+ {view:'speaking', uz:"Speaking", en:"Speaking", ru:"Говорение", d_uz:"Cue cardlar va IELTS taymer.", d_en:"Cue cards with an IELTS-style timer.", d_ru:"Cue cards с таймером в стиле IELTS."},
+ {view:'homework', uz:"Uyga vazifa", en:"Homework", ru:"Домашнее задание", d_uz:"Haftalik ro'yxat va aralash test.", d_en:"Weekly checklist and a mixed test.", d_ru:"Еженедельный список и смешанный тест."},
+];
+function renderHomeCards(){
+  document.getElementById('homeCards').innerHTML = homeCardDefs.map(c=>`
+    <div class="card" style="cursor:pointer;" onclick="goto('${c.view}')">
+      <h3 class="tag-uz">${c.uz}</h3><h3 class="tag-en">${c.en}</h3><h3 class="tag-ru">${c.ru}</h3>
+      <p class="muted tag-uz">${c.d_uz}</p><p class="muted tag-en">${c.d_en}</p><p class="muted tag-ru">${c.d_ru}</p>
+    </div>`).join('');
+}
+function renderHome(){
+  document.getElementById('bandBadgeVal').textContent = state.band || '—';
+  drawLadder();
+  renderHomeCards();
+  renderProgressBars(document.getElementById('progressCard'));
+  renderProgressBars(document.getElementById('progressCard2'));
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+setLang(state.lang || 'uz');
+renderGrammarList();
+renderVocab();
+renderListening();
+renderReading();
+renderWriting();
+renderSpeaking();
+renderHwChecklist();
+renderHwTest();
+renderHome();
+</script>
+</body>
+</html>
