@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biz haqimizda — Zinapoya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-lang="uz">
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="index.html"><span class="mark">Zinapoya</span><span class="sub">IELTS 9 sari</span></a>
+    <nav class="tabs">
+      <a href="index.html"><span class="tag-uz">Bosh sahifa</span><span class="tag-en">Home</span><span class="tag-ru">Главная</span></a>
+      <a href="about.html"><span class="tag-uz">Biz haqimizda</span><span class="tag-en">About</span><span class="tag-ru">О нас</span></a>
+      <a href="pricing.html"><span class="tag-uz">Narxlar</span><span class="tag-en">Pricing</span><span class="tag-ru">Тарифы</span></a>
+      <a href="blog.html"><span class="tag-uz">Blog</span><span class="tag-en">Blog</span><span class="tag-ru">Блог</span></a>
+    </nav>
+    <div class="langtoggle">
+      <button data-l="uz">UZ</button><button data-l="ru">RU</button><button data-l="en">EN</button>
+    </div>
+  </div>
+</header>
+<main>
+  <h1><span class="tag-uz">Biz haqimizda</span><span class="tag-en">About us</span><span class="tag-ru">О нас</span></h1>
+  <div class="card">
+    <p id="aboutText" class="muted" style="font-size:1.05rem;"></p>
+  </div>
+  <div class="divider"></div>
+  <div class="card">
+    <h3><span class="tag-uz">Bog'lanish</span><span class="tag-en">Contact</span><span class="tag-ru">Контакты</span></h3>
+    <p class="muted" id="contactLine"></p>
+  </div>
+</main>
+<footer>
+  <span class="tag-uz">Zinapoya — shaxsiy foydalanish uchun yaratilgan.</span>
+  <span class="tag-en">Zinapoya — built for personal use.</span>
+  <span class="tag-ru">Zinapoya — создано для личного использования.</span>
+</footer>
+<script src="site.js"></script>
+<script>
+wireLangToggle();
+markActiveNav();
+loadContent().then(content=>{
+  function render(){
+    document.getElementById('aboutText').textContent = L3(content.about.uz, content.about.ru, content.about.en);
+    const email = content.site.contact_email || '';
+    const tg = content.site.telegram || '';
+    document.getElementById('contactLine').innerHTML = `Email: <a href="mailto:${email}">${email}</a>` + (tg?` &nbsp;·&nbsp; Telegram: <a href="${tg}" target="_blank" rel="noopener">${tg}</a>`:'');
+  }
+  render();
+  document.querySelectorAll('.langtoggle button').forEach(b=>b.addEventListener('click', render));
+});
+</script>
+</body>
+</html>
