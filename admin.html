@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin — Zinapoya</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.adm-tabs{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:20px;}
+.adm-tabs button{background:var(--bg-2); border:1px solid var(--line); padding:8px 14px; border-radius:999px; font-size:.85rem; cursor:pointer; color:var(--ink-soft);}
+.adm-tabs button.active{background:var(--teal); color:#fff; border-color:var(--teal);}
+.adm-view{display:none;}
+.adm-view.active{display:block;}
+.item-row{border:1px solid var(--line); border-radius:var(--radius-m); padding:16px; margin-bottom:14px; background:var(--bg-2);}
+.item-row .rowhead{display:flex; justify-content:space-between; align-items:center; gap:10px;}
+.mini{font-size:.78rem; color:var(--ink-soft);}
+.warn{border:1px solid var(--gold); background:var(--gold-soft); border-radius:var(--radius-m); padding:14px; font-size:.88rem; color:var(--teal-deep);}
+#gate{max-width:360px; margin:80px auto;}
+</style>
+</head>
+<body data-lang="uz">
+
+<div id="gate">
+  <div class="card">
+    <h2>🔒 Admin</h2>
+    <p class="muted mini" id="gateHint"></p>
+    <label class="formlabel">Parol</label>
+    <input type="password" id="pwInput">
+    <button class="btn" style="margin-top:14px; width:100%;" onclick="tryLogin()">Kirish</button>
+    <p class="mini" id="gateMsg" style="color:var(--danger);"></p>
+  </div>
+</div>
+
+<div id="adminApp" style="display:none;">
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="index.html"><span class="mark">Zinapoya</span><span class="sub">Admin panel</span></a>
+    <div style="margin-left:auto; display:flex; gap:10px;">
+      <button class="btn ghost small" onclick="logout()">Chiqish</button>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="warn" style="margin-bottom:20px;">
+    ⚠️ Bu admin panel hozircha faqat <b>shu brauzeringizda</b> ishlaydi (statik sayt, backend yo'q). O'zgarishlar avtomatik ravishda barcha tashrif buyuruvchilarga ko'rinmaydi — pastdagi <b>"content.json ni yuklab olish"</b> tugmasi bilan faylni eksport qiling, uni loyihangizdagi <code>content.json</code> fayli o'rniga qo'ying va GitHub'ga qayta joylang (push qiling). Shundagina o'zgarishlar barcha foydalanuvchilar uchun ko'rinadi.
+  </div>
+
+  <div class="adm-tabs" id="admTabs">
+    <button data-v="about" class="active">Sayt / Biz haqimizda</button>
+    <button data-v="pricing">Narxlar</button>
+    <button data-v="blog">Blog</button>
+    <button data-v="students">Foydalanuvchilar</button>
+    <button data-v="payments">To'lovlar</button>
+    <button data-v="export">Export / Import</button>
+  </div>
+
+  <div class="adm-view active" id="adm-about">
+    <div class="card">
+      <h3>Sayt nomi va aloqa</h3>
+      <label class="formlabel">Sayt nomi</label>
+      <input type="text" id="f_sitename">
+      <label class="formlabel">Email</label>
+      <input type="text" id="f_email">
+      <label class="formlabel">Telegram havolasi</label>
+      <input type="text" id="f_telegram">
+    </div>
+    <div class="card" style="margin-top:16px;">
+      <h3>"Biz haqimizda" matni</h3>
+      <label class="formlabel">O'zbekcha</label>
+      <textarea id="f_about_uz"></textarea>
+      <label class="formlabel">Русский</label>
+      <textarea id="f_about_ru"></textarea>
+      <label class="formlabel">English</label>
+      <textarea id="f_about_en"></textarea>
+    </div>
+    <button class="btn" style="margin-top:16px;" onclick="saveAbout()">Saqlash</button>
+    <span class="mini" id="aboutSavedMsg"></span>
+  </div>
+
+  <div class="adm-view" id="adm-pricing">
+    <div id="pricingList"></div>
+    <button class="btn ghost" onclick="addPlan()">+ Yangi tarif qo'shish</button>
+  </div>
+
+  <div class="adm-view" id="adm-blog">
+    <div id="blogList"></div>
+    <button class="btn ghost" onclick="addPost()">+ Yangi maqola qo'shish</button>
+  </div>
+
+  <div class="adm-view" id="adm-students">
+    <div class="warn">Bu bo'lim faqat <b>shu brauzerdagi</b> ma'lumotlarni ko'rsatadi (masalan, sizning o'z test natijangiz). Chunki sayt hozircha backend/ma'lumotlar bazasiga ulanmagan, haqiqiy o'quvchilarning progressini markazlashtirilgan holda ko'rish uchun keyinchalik server (masalan, Firebase yoki Supabase) qo'shish kerak bo'ladi.</div>
+    <div class="card" style="margin-top:16px;" id="localStatsCard"></div>
+  </div>
+
+  <div class="adm-view" id="adm-payments">
+    <div class="warn">To'lov tizimi hozircha ulanmagan. Tayyor bo'lganingizda, bu yerga Payme yoki Click "merchant ID" larini kiritish, yoki Stripe kabi xalqaro tizim uchun havola qo'shish mumkin bo'ladi — lekin buning uchun avval saytga backend (server) qo'shish kerak, chunki xavfsiz to'lovni faqat statik HTML orqali amalga oshirib bo'lmaydi.</div>
+    <div class="card" style="margin-top:16px;">
+      <label class="formlabel">Payme merchant ID (keyinroq)</label>
+      <input type="text" placeholder="hozircha bo'sh qoldiring" disabled>
+      <label class="formlabel">Click merchant ID (keyinroq)</label>
+      <input type="text" placeholder="hozircha bo'sh qoldiring" disabled>
+    </div>
+  </div>
+
+  <div class="adm-view" id="adm-export">
+    <div class="card">
+      <h3>content.json ni yuklab olish</h3>
+      <p class="muted mini">Barcha o'zgarishlaringizni (sayt matni, narxlar, blog) bitta faylga eksport qiling, keyin uni loyihadagi content.json fayli o'rniga qo'yib, GitHub'ga push qiling.</p>
+      <button class="btn" onclick="exportJson()">⬇ content.json yuklab olish</button>
+    </div>
+    <div class="card" style="margin-top:16px;">
+      <h3>content.json ni import qilish</h3>
+      <p class="muted mini">Agar avvalgi content.json faylingiz bo'lsa, shu yerga joylashtiring va "Import qilish" tugmasini bosing.</p>
+      <textarea id="importArea" placeholder="JSON matnini shu yerga joylashtiring..."></textarea>
+      <button class="btn ghost" style="margin-top:10px;" onclick="importJson()">Import qilish</button>
+      <span class="mini" id="importMsg"></span>
+    </div>
+    <div class="card" style="margin-top:16px;">
+      <h3>Boshlang'ich holatga qaytarish</h3>
+      <button class="btn danger" onclick="resetContent()">Barcha kontentni boshlang'ich holatga qaytarish</button>
+    </div>
+  </div>
+
+</main>
+</div>
+
+<script src="site.js"></script>
+<script>
+const PW_KEY = 'zinapoya_admin_pw';
+function tryLogin(){
+  const stored = localStorage.getItem(PW_KEY);
+  const val = document.getElementById('pwInput').value;
+  if(!stored){
+    if(val.length < 4){ document.getElementById('gateMsg').textContent = "Parol kamida 4 belgidan iborat bo'lsin."; return; }
+    localStorage.setItem(PW_KEY, val);
+    openAdmin();
+    return;
+  }
+  if(val === stored){ openAdmin(); }
+  else{ document.getElementById('gateMsg').textContent = "Parol noto'g'ri."; }
+}
+function logout(){ document.getElementById('adminApp').style.display='none'; document.getElementById('gate').style.display='block'; document.getElementById('pwInput').value=''; }
+function openAdmin(){
+  document.getElementById('gate').style.display='none';
+  document.getElementById('adminApp').style.display='block';
+  initAdmin();
+}
+(function initGate(){
+  const stored = localStorage.getItem(PW_KEY);
+  document.getElementById('gateHint').textContent = stored
+    ? "Davom etish uchun parolingizni kiriting."
+    : "Birinchi marta kiryapsiz — o'zingizga parol o'rnating (buni eslab qoling, faqat shu brauzerda saqlanadi).";
+})();
+
+let CONTENT = null;
+
+function switchAdmView(v){
+  document.querySelectorAll('.adm-view').forEach(el=>el.classList.remove('active'));
+  document.getElementById('adm-'+v).classList.add('active');
+  document.querySelectorAll('#admTabs button').forEach(b=>b.classList.toggle('active', b.dataset.v===v));
+}
+document.getElementById('admTabs').addEventListener('click', e=>{
+  const b = e.target.closest('button[data-v]');
+  if(b) switchAdmView(b.dataset.v);
+});
+
+async function initAdmin(){
+  CONTENT = await loadContent();
+  fillAboutForm();
+  renderPricingAdmin();
+  renderBlogAdmin();
+  renderLocalStats();
+}
+
+function fillAboutForm(){
+  document.getElementById('f_sitename').value = CONTENT.site.name || '';
+  document.getElementById('f_email').value = CONTENT.site.contact_email || '';
+  document.getElementById('f_telegram').value = CONTENT.site.telegram || '';
+  document.getElementById('f_about_uz').value = CONTENT.about.uz || '';
+  document.getElementById('f_about_ru').value = CONTENT.about.ru || '';
+  document.getElementById('f_about_en').value = CONTENT.about.en || '';
+}
+function saveAbout(){
+  CONTENT.site.name = document.getElementById('f_sitename').value;
+  CONTENT.site.contact_email = document.getElementById('f_email').value;
+  CONTENT.site.telegram = document.getElementById('f_telegram').value;
+  CONTENT.about.uz = document.getElementById('f_about_uz').value;
+  CONTENT.about.ru = document.getElementById('f_about_ru').value;
+  CONTENT.about.en = document.getElementById('f_about_en').value;
+  saveContent(CONTENT);
+  document.getElementById('aboutSavedMsg').textContent = '✓ Saqlandi';
+  setTimeout(()=>document.getElementById('aboutSavedMsg').textContent='', 2000);
+}
+
+function renderPricingAdmin(){
+  document.getElementById('pricingList').innerHTML = (CONTENT.pricing||[]).map((p,i)=>`
+    <div class="item-row">
+      <div class="rowhead"><b>${p.name_uz || '(nomsiz)'}</b>
+        <div>
+          <label style="font-size:.8rem;"><input type="checkbox" ${p.highlighted?'checked':''} onchange="setPlanField(${i},'highlighted',this.checked)"> tavsiya etiladi</label>
+          <button class="btn danger small" onclick="removePlan(${i})">O'chirish</button>
+        </div>
+      </div>
+      <div class="grid cols-3" style="margin-top:10px;">
+        <div><label class="formlabel">Nomi (UZ)</label><input type="text" value="${escapeAttr(p.name_uz)}" oninput="setPlanField(${i},'name_uz',this.value)"></div>
+        <div><label class="formlabel">Nomi (RU)</label><input type="text" value="${escapeAttr(p.name_ru)}" oninput="setPlanField(${i},'name_ru',this.value)"></div>
+        <div><label class="formlabel">Nomi (EN)</label><input type="text" value="${escapeAttr(p.name_en)}" oninput="setPlanField(${i},'name_en',this.value)"></div>
+      </div>
+      <label class="formlabel">Narxi (masalan: 99 000 so'm / mo.)</label>
+      <input type="text" value="${escapeAttr(p.price)}" oninput="setPlanField(${i},'price',this.value)">
+      <div class="grid cols-3" style="margin-top:10px;">
+        <div><label class="formlabel">Davr (UZ)</label><input type="text" value="${escapeAttr(p.period_uz)}" oninput="setPlanField(${i},'period_uz',this.value)"></div>
+        <div><label class="formlabel">Давр (RU)</label><input type="text" value="${escapeAttr(p.period_ru)}" oninput="setPlanField(${i},'period_ru',this.value)"></div>
+        <div><label class="formlabel">Period (EN)</label><input type="text" value="${escapeAttr(p.period_en)}" oninput="setPlanField(${i},'period_en',this.value)"></div>
+      </div>
+      <div class="grid cols-3" style="margin-top:10px;">
+        <div><label class="formlabel">Xususiyatlar (UZ, har birini yangi qatordan)</label><textarea oninput="setPlanFeatures(${i},'features_uz',this.value)">${(p.features_uz||[]).join('\\n')}</textarea></div>
+        <div><label class="formlabel">Особенности (RU)</label><textarea oninput="setPlanFeatures(${i},'features_ru',this.value)">${(p.features_ru||[]).join('\\n')}</textarea></div>
+        <div><label class="formlabel">Features (EN)</label><textarea oninput="setPlanFeatures(${i},'features_en',this.value)">${(p.features_en||[]).join('\\n')}</textarea></div>
+      </div>
+    </div>
+  `).join('') || '<p class="muted">Hozircha tariflar yo\\'q.</p>';
+}
+function setPlanField(i, field, val){ CONTENT.pricing[i][field] = val; saveContent(CONTENT); }
+function setPlanFeatures(i, field, val){ CONTENT.pricing[i][field] = val.split('\n').map(s=>s.trim()).filter(Boolean); saveContent(CONTENT); }
+function addPlan(){
+  CONTENT.pricing = CONTENT.pricing || [];
+  CONTENT.pricing.push({id:'plan'+Date.now(), price:'', period_uz:'oyiga', period_ru:'в месяц', period_en:'per month', name_uz:'Yangi tarif', name_ru:'Новый тариф', name_en:'New plan', highlighted:false, features_uz:[], features_ru:[], features_en:[]});
+  saveContent(CONTENT); renderPricingAdmin();
+}
+function removePlan(i){ if(confirm("O'chirilsinmi?")){ CONTENT.pricing.splice(i,1); saveContent(CONTENT); renderPricingAdmin(); } }
+
+function renderBlogAdmin(){
+  document.getElementById('blogList').innerHTML = (CONTENT.blog||[]).map((p,i)=>`
+    <div class="item-row">
+      <div class="rowhead"><b>${p.title_uz || '(nomsiz)'}</b><button class="btn danger small" onclick="removePost(${i})">O'chirish</button></div>
+      <label class="formlabel">Sana</label>
+      <input type="text" value="${escapeAttr(p.date)}" oninput="setPostField(${i},'date',this.value)">
+      <div class="grid cols-3" style="margin-top:10px;">
+        <div><label class="formlabel">Sarlavha (UZ)</label><input type="text" value="${escapeAttr(p.title_uz)}" oninput="setPostField(${i},'title_uz',this.value)"></div>
+        <div><label class="formlabel">Заголовок (RU)</label><input type="text" value="${escapeAttr(p.title_ru)}" oninput="setPostField(${i},'title_ru',this.value)"></div>
+        <div><label class="formlabel">Title (EN)</label><input type="text" value="${escapeAttr(p.title_en)}" oninput="setPostField(${i},'title_en',this.value)"></div>
+      </div>
+      <div class="grid cols-3" style="margin-top:10px;">
+        <div><label class="formlabel">Qisqa matn (UZ)</label><textarea oninput="setPostField(${i},'excerpt_uz',this.value)">${p.excerpt_uz||''}</textarea></div>
+        <div><label class="formlabel">Краткое (RU)</label><textarea oninput="setPostField(${i},'excerpt_ru',this.value)">${p.excerpt_ru||''}</textarea></div>
+        <div><label class="formlabel">Excerpt (EN)</label><textarea oninput="setPostField(${i},'excerpt_en',this.value)">${p.excerpt_en||''}</textarea></div>
+      </div>
+      <div class="grid cols-3" style="margin-top:10px;">
+        <div><label class="formlabel">To'liq matn (UZ)</label><textarea oninput="setPostField(${i},'body_uz',this.value)">${p.body_uz||''}</textarea></div>
+        <div><label class="formlabel">Полный текст (RU)</label><textarea oninput="setPostField(${i},'body_ru',this.value)">${p.body_ru||''}</textarea></div>
+        <div><label class="formlabel">Body (EN)</label><textarea oninput="setPostField(${i},'body_en',this.value)">${p.body_en||''}</textarea></div>
+      </div>
+    </div>
+  `).join('') || '<p class="muted">Hozircha maqolalar yo\\'q.</p>';
+}
+function setPostField(i, field, val){ CONTENT.blog[i][field] = val; saveContent(CONTENT); }
+function addPost(){
+  CONTENT.blog = CONTENT.blog || [];
+  const today = new Date().toISOString().slice(0,10);
+  CONTENT.blog.push({id:'post'+Date.now(), date:today, title_uz:'Yangi maqola', title_ru:'Новая статья', title_en:'New post', excerpt_uz:'', excerpt_ru:'', excerpt_en:'', body_uz:'', body_ru:'', body_en:''});
+  saveContent(CONTENT); renderBlogAdmin();
+}
+function removePost(i){ if(confirm("O'chirilsinmi?")){ CONTENT.blog.splice(i,1); saveContent(CONTENT); renderBlogAdmin(); } }
+
+function renderLocalStats(){
+  const box = document.getElementById('localStatsCard');
+  try{
+    const raw = localStorage.getItem('zinapoya_state_v1');
+    if(!raw){ box.innerHTML = '<p class="muted">Shu brauzerda hali test/mashq natijalari topilmadi.</p>'; return; }
+    const s = JSON.parse(raw);
+    const g = Object.values(s.grammar||{}).filter(x=>x.done).length;
+    const v = Object.keys(s.vocab||{}).length;
+    box.innerHTML = `
+      <p><b>Daraja (band):</b> ${s.band || '—'}</p>
+      <p><b>Tugatilgan grammatika bo'limlari:</b> ${g}</p>
+      <p><b>O'rganilgan lug'at mavzulari:</b> ${v}</p>
+      <p><b>Eng yaxshi aralash test natijasi:</b> ${s.hwTestBest!=null? s.hwTestBest+'/10' : '—'}</p>`;
+  }catch(e){ box.innerHTML = '<p class="muted">Ma\\'lumotni o\\'qib bo\\'lmadi.</p>'; }
+}
+
+function exportJson(){
+  const blob = new Blob([JSON.stringify(CONTENT, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'content.json';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+function importJson(){
+  try{
+    const val = document.getElementById('importArea').value;
+    const parsed = JSON.parse(val);
+    CONTENT = parsed;
+    saveContent(CONTENT);
+    fillAboutForm(); renderPricingAdmin(); renderBlogAdmin();
+    document.getElementById('importMsg').textContent = '✓ Import qilindi';
+  }catch(e){
+    document.getElementById('importMsg').textContent = "JSON noto'g'ri formatda.";
+  }
+}
+function resetContent(){
+  if(confirm("Butun kontent boshlang'ich holatga qaytariladi. Davom etasizmi?")){
+    localStorage.removeItem(CONTENT_KEY);
+    location.reload();
+  }
+}
+function escapeAttr(s){ return (s||'').replace(/"/g,'&quot;'); }
+</script>
+</body>
+</html>
