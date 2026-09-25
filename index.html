@@ -226,9 +226,88 @@ textarea{
 [data-lang="ru"] .tag-ru{display:inline;}
 footer{max-width:1080px; margin:0 auto; padding:20px; color:var(--ink-soft); font-size:.82rem; text-align:center;}
 .overflow-x{overflow-x:auto;}
+
+/* ---------- Onboarding (language + profile) ---------- */
+.onboarding-overlay{
+  position:fixed; inset:0; z-index:200; background:rgba(19,38,35,.55);
+  display:flex; align-items:center; justify-content:center; padding:20px;
+  backdrop-filter:blur(2px);
+}
+.onboarding-card{
+  background:var(--bg-2); border-radius:var(--radius-m); padding:32px; max-width:420px; width:100%;
+  box-shadow:0 12px 40px rgba(0,0,0,.25);
+}
+.onboarding-card h2{font-size:1.3rem; margin-bottom:6px;}
+.onboarding-card p.sub{color:var(--ink-soft); font-size:.9rem; margin-bottom:20px;}
+.lang-choice-grid{display:grid; gap:10px;}
+.lang-choice-grid button{
+  display:flex; align-items:center; gap:10px; padding:14px 16px; border:1px solid var(--line);
+  border-radius:var(--radius-m); background:var(--bg-2); font-size:1rem; cursor:pointer; text-align:left;
+  color:var(--ink); transition:border-color .15s;
+}
+.lang-choice-grid button:hover{border-color:var(--teal); background:var(--gold-soft);}
+.ob-field{margin-bottom:14px;}
+.ob-field label{display:block; font-size:.8rem; color:var(--ink-soft); margin-bottom:4px;}
+.ob-field input{
+  width:100%; border:1px solid var(--line); border-radius:var(--radius-s); padding:10px 12px;
+  font-size:.95rem; background:var(--bg-2); color:var(--ink);
+}
+.ob-back{background:none; border:none; color:var(--ink-soft); font-size:.85rem; cursor:pointer; margin-bottom:10px; padding:0;}
+
+/* ---------- Profile badge / view ---------- */
+.profile-badge{
+  display:flex; align-items:center; gap:8px; border:1px solid var(--line); background:var(--bg-2);
+  padding:5px 12px 5px 5px; border-radius:999px; cursor:pointer; font-size:.85rem; color:var(--ink);
+}
+.profile-badge .avatar{
+  width:26px; height:26px; border-radius:50%; background:var(--teal); color:#fff;
+  display:flex; align-items:center; justify-content:center; font-size:.75rem; font-weight:700; flex-shrink:0;
+}
 </style>
 </head>
 <body data-lang="uz">
+
+<div id="onboarding" class="onboarding-overlay" style="display:none;">
+  <div class="onboarding-card">
+    <div id="ob-step-lang">
+      <h2>Tilni tanlang / Выберите язык / Choose language</h2>
+      <p class="sub">Saytdan foydalanish uchun tilni tanlang</p>
+      <div class="lang-choice-grid">
+        <button onclick="obSelectLang('uz')">🇺🇿 O'zbekcha</button>
+        <button onclick="obSelectLang('ru')">🇷🇺 Русский</button>
+        <button onclick="obSelectLang('en')">🇬🇧 English</button>
+      </div>
+    </div>
+    <div id="ob-step-profile" style="display:none;">
+      <button class="ob-back" onclick="obBackToLang()">← <span class="tag-uz">Orqaga</span><span class="tag-en">Back</span><span class="tag-ru">Назад</span></button>
+      <h2><span class="tag-uz">Tanishaylik</span><span class="tag-en">Let's get acquainted</span><span class="tag-ru">Давайте познакомимся</span></h2>
+      <p class="sub tag-uz">Davom etish uchun ma'lumotlaringizni kiriting</p>
+      <p class="sub tag-en">Enter your details to continue</p>
+      <p class="sub tag-ru">Введите свои данные, чтобы продолжить</p>
+      <div class="ob-field">
+        <label><span class="tag-uz">Ism</span><span class="tag-en">First name</span><span class="tag-ru">Имя</span></label>
+        <input type="text" id="ob_firstname">
+      </div>
+      <div class="ob-field">
+        <label><span class="tag-uz">Familiya</span><span class="tag-en">Last name</span><span class="tag-ru">Фамилия</span></label>
+        <input type="text" id="ob_lastname">
+      </div>
+      <div class="ob-field">
+        <label><span class="tag-uz">Telefon raqami</span><span class="tag-en">Phone number</span><span class="tag-ru">Номер телефона</span></label>
+        <input type="tel" id="ob_phone" placeholder="+998 90 123 45 67">
+      </div>
+      <div class="ob-field">
+        <label><span class="tag-uz">Email (ixtiyoriy)</span><span class="tag-en">Email (optional)</span><span class="tag-ru">Email (необязательно)</span></label>
+        <input type="email" id="ob_email">
+      </div>
+      <button class="btn" style="width:100%; justify-content:center;" onclick="obSubmitProfile()">
+        <span class="tag-uz">Boshlash</span><span class="tag-en">Start</span><span class="tag-ru">Начать</span>
+      </button>
+      <p class="mini" id="obMsg" style="color:var(--danger); font-size:.8rem; margin-top:8px;"></p>
+    </div>
+  </div>
+</div>
+
 
 <header class="top">
   <div class="top-inner">
@@ -256,6 +335,10 @@ footer{max-width:1080px; margin:0 auto; padding:20px; color:var(--ink-soft); fon
       <button id="btnRu">RU</button>
       <button id="btnEn">EN</button>
     </div>
+    <button class="profile-badge" id="profileBadge" onclick="openProfileView()">
+      <span class="avatar" id="profileAvatar">?</span>
+      <span id="profileNameShort"><span class="tag-uz">Profil</span><span class="tag-en">Profile</span><span class="tag-ru">Профиль</span></span>
+    </button>
   </div>
 </header>
 
@@ -413,6 +496,37 @@ footer{max-width:1080px; margin:0 auto; padding:20px; color:var(--ink-soft); fon
     </div>
   </section>
 
+  <!-- ===================== PROFILE ===================== -->
+  <section class="view" id="view-profile">
+    <div class="section-title"><div><h2><span class="tag-uz">Profil</span><span class="tag-en">Profile</span><span class="tag-ru">Профиль</span></h2></div></div>
+    <div class="card">
+      <div class="ob-field">
+        <label><span class="tag-uz">Ism</span><span class="tag-en">First name</span><span class="tag-ru">Имя</span></label>
+        <input type="text" id="pf_firstname">
+      </div>
+      <div class="ob-field">
+        <label><span class="tag-uz">Familiya</span><span class="tag-en">Last name</span><span class="tag-ru">Фамилия</span></label>
+        <input type="text" id="pf_lastname">
+      </div>
+      <div class="ob-field">
+        <label><span class="tag-uz">Telefon raqami</span><span class="tag-en">Phone number</span><span class="tag-ru">Номер телефона</span></label>
+        <input type="tel" id="pf_phone">
+      </div>
+      <div class="ob-field">
+        <label><span class="tag-uz">Email</span><span class="tag-en">Email</span><span class="tag-ru">Email</span></label>
+        <input type="email" id="pf_email">
+      </div>
+      <button class="btn" onclick="saveProfileEdits()"><span class="tag-uz">Saqlash</span><span class="tag-en">Save</span><span class="tag-ru">Сохранить</span></button>
+      <span class="mini" id="pfSavedMsg" style="margin-left:10px; font-size:.82rem; color:var(--ok);"></span>
+    </div>
+    <div class="card" style="margin-top:16px;">
+      <p class="muted tag-uz">Boshqa raqam/hisob bilan kirmoqchi bo'lsangiz, quyidagi tugmani bosing — bu profil ma'lumotlaringizni shu brauzerdan o'chiradi (mashg'ulot progressiga tegmaydi).</p>
+      <p class="muted tag-en">If you want to sign in with a different number/account, use the button below — this removes your profile data from this browser (doesn't affect your exercise progress).</p>
+      <p class="muted tag-ru">Если хотите войти с другим номером/аккаунтом, нажмите кнопку ниже — это удалит данные профиля из этого браузера (на прогресс упражнений не влияет).</p>
+      <button class="btn ghost" onclick="clearProfile()"><span class="tag-uz">Profildan chiqish</span><span class="tag-en">Sign out of profile</span><span class="tag-ru">Выйти из профиля</span></button>
+    </div>
+  </section>
+
 </main>
 
 <footer>
@@ -465,6 +579,88 @@ document.getElementById('btnUz').onclick=()=>setLang('uz');
 document.getElementById('btnRu').onclick=()=>setLang('ru');
 document.getElementById('btnEn').onclick=()=>setLang('en');
 
+/* ============================================================
+   PROFILE (name, surname, phone) + ONBOARDING (language + profile)
+   ============================================================ */
+const PROFILE_KEY = 'zinapoya_profile_v1';
+function loadProfile(){
+  try{ const raw = localStorage.getItem(PROFILE_KEY); return raw ? JSON.parse(raw) : null; }catch(e){ return null; }
+}
+function saveProfile(p){ try{ localStorage.setItem(PROFILE_KEY, JSON.stringify(p)); }catch(e){} }
+
+function obSelectLang(l){
+  setLang(l);
+  document.getElementById('ob-step-lang').style.display='none';
+  document.getElementById('ob-step-profile').style.display='block';
+}
+function obBackToLang(){
+  document.getElementById('ob-step-profile').style.display='none';
+  document.getElementById('ob-step-lang').style.display='block';
+}
+function obSubmitProfile(){
+  const firstName = document.getElementById('ob_firstname').value.trim();
+  const lastName = document.getElementById('ob_lastname').value.trim();
+  const phone = document.getElementById('ob_phone').value.trim();
+  const email = document.getElementById('ob_email').value.trim();
+  if(!firstName || !phone){
+    document.getElementById('obMsg').textContent = L3("Iltimos, ism va telefon raqamingizni kiriting.","Пожалуйста, введите имя и номер телефона.","Please enter your name and phone number.");
+    return;
+  }
+  const profile = {firstName, lastName, phone, email, lang:state.lang, createdAt:new Date().toISOString()};
+  saveProfile(profile);
+  document.getElementById('onboarding').style.display='none';
+  renderProfileBadge();
+}
+function checkOnboarding(){
+  const p = loadProfile();
+  if(p){
+    document.getElementById('onboarding').style.display='none';
+    setLang(p.lang || state.lang);
+    renderProfileBadge();
+  }else{
+    document.getElementById('onboarding').style.display='flex';
+  }
+}
+function renderProfileBadge(){
+  const p = loadProfile();
+  const avatarEl = document.getElementById('profileAvatar');
+  const nameEl = document.getElementById('profileNameShort');
+  if(p && p.firstName){
+    avatarEl.textContent = (p.firstName[0]||'').toUpperCase() + (p.lastName? p.lastName[0].toUpperCase() : '');
+    nameEl.textContent = p.firstName + (p.lastName? ' '+p.lastName : '');
+  }else{
+    avatarEl.textContent = '?';
+    nameEl.innerHTML = '<span class="tag-uz">Profil</span><span class="tag-en">Profile</span><span class="tag-ru">Профиль</span>';
+  }
+}
+function openProfileView(){
+  const p = loadProfile() || {};
+  document.getElementById('pf_firstname').value = p.firstName || '';
+  document.getElementById('pf_lastname').value = p.lastName || '';
+  document.getElementById('pf_phone').value = p.phone || '';
+  document.getElementById('pf_email').value = p.email || '';
+  goto('profile');
+}
+function saveProfileEdits(){
+  const p = loadProfile() || {};
+  p.firstName = document.getElementById('pf_firstname').value.trim();
+  p.lastName = document.getElementById('pf_lastname').value.trim();
+  p.phone = document.getElementById('pf_phone').value.trim();
+  p.email = document.getElementById('pf_email').value.trim();
+  p.lang = state.lang;
+  saveProfile(p);
+  renderProfileBadge();
+  document.getElementById('pfSavedMsg').textContent = L3('✓ Saqlandi','✓ Сохранено','✓ Saved');
+  setTimeout(()=>{ document.getElementById('pfSavedMsg').textContent=''; }, 2000);
+}
+function clearProfile(){
+  const msg = L3("Profil ma'lumotlaringiz shu brauzerdan o'chiriladi. Davom etasizmi?","Данные вашего профиля будут удалены из этого браузера. Продолжить?","Your profile data will be removed from this browser. Continue?");
+  if(confirm(msg)){
+    localStorage.removeItem(PROFILE_KEY);
+    location.reload();
+  }
+}
+
 function resetAll(){
   const msg = L3("Barcha progress o'chiriladi. Davom etasizmi?", "Весь прогресс будет удалён. Продолжить?", "This will erase all progress. Continue?");
   if(confirm(msg)){
@@ -496,6 +692,8 @@ function drawLadder(){
 
 /* ============================================================
    LEVEL TEST DATA (20 questions, progressive difficulty)
+   Each question has a "band" weight; scoring maps to an
+   approximate overall band 1-9.
    ============================================================ */
 const testQuestions = [
  {q:"She ___ to the market every morning.",opts:["go","goes","going","gone"],a:1,band:2},
@@ -523,11 +721,13 @@ let testIdx = 0, testAnswers = [];
 function renderTest(){
   const area = document.getElementById('testArea');
   if(testIdx >= testQuestions.length){
+    // score
     let maxBandReached = 1;
     let correctCount = 0;
     testAnswers.forEach((ans,i)=>{
       if(ans === testQuestions[i].a){ correctCount++; if(testQuestions[i].band > maxBandReached) maxBandReached = testQuestions[i].band; }
     });
+    // approximate band: based on correct count out of 20, scaled 1-9, nudged by hardest correct
     let scoreBand = Math.max(1, Math.round((correctCount/testQuestions.length)*9));
     let finalBand = Math.round((scoreBand + Math.min(maxBandReached,9))/2);
     finalBand = Math.min(9, Math.max(1, finalBand));
@@ -756,7 +956,7 @@ function markVocabDone(id){
 }
 
 /* ============================================================
-   LISTENING
+   LISTENING (uses browser speechSynthesis — no external audio)
    ============================================================ */
 const listeningItems = [
  {id:'l1', level:'A2-B1', title_uz:"Kundalik tartib", title_en:"Daily routine", title_ru:"Распорядок дня",
@@ -1001,6 +1201,7 @@ function toggleHw(id){
   state.hwChecklist[id] = !state.hwChecklist[id];
   saveState(); renderHwChecklist(); renderHome();
 }
+// mixed test: pull 10 questions across grammar + vocab + reading style
 const hwMixed = [
  {q:"She ___ in London since 2015.",opts:["lives","has lived","lived","is living"],a:1},
  {q:"If I ___ you, I would apologise.",opts:["am","was","were","be"],a:2},
@@ -1106,6 +1307,7 @@ renderSpeaking();
 renderHwChecklist();
 renderHwTest();
 renderHome();
+checkOnboarding();
 </script>
 </body>
 </html>
